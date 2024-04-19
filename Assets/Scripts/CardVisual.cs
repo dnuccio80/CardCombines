@@ -22,13 +22,12 @@ public class CardVisual : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        
+        currentSide = CardSide.back;
     }
     private void Start()
     {
         spriteRenderer.sprite = backCardImage;
         card.OnCardClicked += Card_OnCardClicked;
-        currentSide = CardSide.back;
     }
 
     private void Card_OnCardClicked(object sender, System.EventArgs e)
