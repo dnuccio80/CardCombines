@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class CardVisual : MonoBehaviour
 {
-
-    [SerializeField] private CardSO cardSO;
     [SerializeField] private Sprite backCardImage;
     [SerializeField] private Card card;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private Sprite frontImage;
 
     private enum CardSide
     {
@@ -28,6 +27,7 @@ public class CardVisual : MonoBehaviour
     {
         spriteRenderer.sprite = backCardImage;
         card.OnCardClicked += Card_OnCardClicked;
+        frontImage = card.GetFrontCardImage();
     }
 
     private void Card_OnCardClicked(object sender, System.EventArgs e)
@@ -56,7 +56,7 @@ public class CardVisual : MonoBehaviour
 
     public void SetFrontImage()
     {
-        spriteRenderer.sprite = cardSO.CardImage;
+        spriteRenderer.sprite = frontImage;
     }
 
     public void SetBackImage()

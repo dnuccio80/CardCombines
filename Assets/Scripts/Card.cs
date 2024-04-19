@@ -6,13 +6,27 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 
-    public event EventHandler OnCardClicked;
+    public event EventHandler<OnCardClickedEventArgs> OnCardClicked;
+    
+    public class OnCardClickedEventArgs : EventArgs
+    {
+        public CardSO cardSO;
+    }
+
+    [SerializeField] private CardSO cardSO;
 
     public void CardClicked()
     {
-        OnCardClicked?.Invoke(this, EventArgs.Empty);
+        OnCardClicked?.Invoke(this, new OnCardClickedEventArgs
+        {
+            cardSO = cardSO
+        }) ;
     }
 
+    public Sprite GetFrontCardImage()
+    {
+        return cardSO.CardImage;
+    }
 
 
 }
