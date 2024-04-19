@@ -20,7 +20,7 @@ public class InputHandler : MonoBehaviour
 
         if(!rayHit.collider) return;
 
-        rayHit.collider.GetComponent<CuadradoImage>().RotateCard();
+        rayHit.collider.GetComponent<Card>().CardClicked();
 
     }
 
