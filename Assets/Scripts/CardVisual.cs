@@ -26,8 +26,15 @@ public class CardVisual : MonoBehaviour
     private void Start()
     {
         spriteRenderer.sprite = backCardImage;
-        card.OnCardClicked += Card_OnCardClicked;
         frontImage = card.GetFrontCardImage();
+
+        card.OnCardClicked += Card_OnCardClicked;
+        card.OnIncorrectCardFlipped += Card_OnIncorrectCardFlipped;
+    }
+
+    private void Card_OnIncorrectCardFlipped(object sender, System.EventArgs e)
+    {
+        FlipToBack();
     }
 
     private void Card_OnCardClicked(object sender, System.EventArgs e)

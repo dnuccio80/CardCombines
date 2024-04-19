@@ -6,27 +6,38 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 
-    public event EventHandler<OnCardClickedEventArgs> OnCardClicked;
-    
-    public class OnCardClickedEventArgs : EventArgs
-    {
-        public CardSO cardSO;
-    }
+    public event EventHandler OnCardClicked;
+    public event EventHandler OnIncorrectCardFlipped;
+
 
     [SerializeField] private CardSO cardSO;
 
     public void CardClicked()
     {
-        OnCardClicked?.Invoke(this, new OnCardClickedEventArgs
+        if(GameManager.Instance.GetCanFlipCard())
         {
-            cardSO = cardSO
-        }) ;
+            GameManager.Instance.FlipToFrontCard(this);
+            OnCardClicked?.Invoke(this, EventArgs.Empty);
+        }
+        
     }
 
     public Sprite GetFrontCardImage()
     {
         return cardSO.CardImage;
     }
+
+    public string GetCardName()
+    {
+        return cardSO.CardName;
+    }
+
+    public void CardDoesNotMatch()
+    {
+        OnIncorrectCardFlipped?.Invoke(this, EventArgs.Empty);
+    }
+
+   
 
 
 }
