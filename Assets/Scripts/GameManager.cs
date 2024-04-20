@@ -39,14 +39,15 @@ public class GameManager : MonoBehaviour
 
     public void FlipToFrontCard(Card card)
     {
-
         if (cardA != null && cardB != null) return;
+
+        float timeToCheckMatch = .4f;
 
         if(cardA == null) cardA = card;
         else
         {
             cardB = card;
-            Invoke("CheckCardMatches", 1f);
+            Invoke("CheckCardMatches", timeToCheckMatch);
         } 
 
     }
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         } else
         {
             Debug.Log("Las cartas no coinciden");
+            OnCardDoesNotMatches?.Invoke(this,EventArgs.Empty);
             cardA.CardDoesNotMatch();
             cardB.CardDoesNotMatch();
             CleanCards();
