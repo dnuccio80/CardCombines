@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950b1c7aaeafdb40b304f88d50be706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardVisual: {fileID: 7463071933167907704}
+  cardSO: {fileID: 0}
 --- !u!1 &8184989913983402334
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26880eb1f08ea1a4cb29bd083e342425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSO: {fileID: 11400000, guid: f362a79056d1f33499da5c6481f968c3, type: 2}
   backCardImage: {fileID: 21300000, guid: dd502cb2f4ebde344a9050c6c3bff3e6, type: 3}
   card: {fileID: 2749357075890349811}

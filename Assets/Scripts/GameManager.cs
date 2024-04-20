@@ -25,6 +25,18 @@ public class GameManager : MonoBehaviour
             CleanCards();
         }
     }
+
+    private void Start()
+    {
+        this.OnCardsMatches += GameManager_OnCardsMatches;
+    }
+
+    private void GameManager_OnCardsMatches(object sender, EventArgs e)
+    {
+        cardA.CardHasBennMatched();
+        cardB.CardHasBennMatched();
+    }
+
     public void FlipToFrontCard(Card card)
     {
 
@@ -44,6 +56,7 @@ public class GameManager : MonoBehaviour
         if(cardA.GetCardName() == cardB.GetCardName())
         {
             Debug.Log("Las cartas coinciden");
+            OnCardsMatches?.Invoke(this,EventArgs.Empty);
             CleanCards();
         } else
         {

@@ -9,11 +9,15 @@ public class Card : MonoBehaviour
     public event EventHandler OnCardClicked;
     public event EventHandler OnIncorrectCardFlipped;
 
-
+    [SerializeField] private CardVisual cardVisual;
     [SerializeField] private CardSO cardSO;
+
+    private bool cardMatched;
 
     public void CardClicked()
     {
+        if (cardMatched || cardVisual.IsCardFlippedToFront()) return;
+
         if(GameManager.Instance.GetCanFlipCard())
         {
             GameManager.Instance.FlipToFrontCard(this);
@@ -35,6 +39,11 @@ public class Card : MonoBehaviour
     public void CardDoesNotMatch()
     {
         OnIncorrectCardFlipped?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void CardHasBennMatched()
+    {
+        cardMatched = true;
     }
 
    

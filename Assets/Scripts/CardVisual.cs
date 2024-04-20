@@ -39,15 +39,7 @@ public class CardVisual : MonoBehaviour
 
     private void Card_OnCardClicked(object sender, System.EventArgs e)
     {
-        switch (currentSide)
-        {
-            case CardSide.front:
-                FlipToBack();
-                break;
-            case CardSide.back:
-                FlipToFront();
-                break;
-        }
+        if(currentSide == CardSide.back) FlipToFront();
     }
 
     private void FlipToFront()
@@ -72,5 +64,9 @@ public class CardVisual : MonoBehaviour
 
     }
 
+    public bool IsCardFlippedToFront()
+    {
+        return currentSide == CardSide.front;
+    }
 
 }
