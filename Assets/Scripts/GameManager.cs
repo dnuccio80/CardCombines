@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
             ChangeGameState(GameState.CountdownToStart);
         }
 
+       
+
         switch(gameState)
         {
             case GameState.WaitingToStart:
@@ -67,6 +69,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         this.OnCardsMatches += GameManager_OnCardsMatches;
+        this.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+
+    private void GameManager_OnGameStateChanged(object sender, OnGameStateChangedEventArgs e)
+    {
+        if(e.gameState == GameState.GamePaused) Time.timeScale = 0f;
+        else Time.timeScale = 1f;
     }
 
     private void GameManager_OnCardsMatches(object sender, EventArgs e)
@@ -162,6 +171,12 @@ public class GameManager : MonoBehaviour
         cardsToMatchAmount -= cardsMatched;
 
         if (cardsToMatchAmount == 0) ChangeGameState(GameState.GameWin);
+    }
+
+    public void ToggleGamePause()
+    {
+        if (gameState == GameState.GamePlaying) ChangeGameState(GameState.GamePaused);
+        else if (gameState == GameState.GamePaused) ChangeGameState(GameState.GamePlaying);
     }
     
 }
