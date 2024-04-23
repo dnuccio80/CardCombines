@@ -21,6 +21,7 @@ public class Card : MonoBehaviour
         if(GameManager.Instance.GetCanFlipCard())
         {
             GameManager.Instance.FlipToFrontCard(this);
+            SoundManager.Instance.EmitFlipCardSound();
             OnCardClicked?.Invoke(this, EventArgs.Empty);
         }
         

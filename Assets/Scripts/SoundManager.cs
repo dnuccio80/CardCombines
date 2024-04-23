@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip matchSuccessSound;
     [SerializeField] private AudioClip matchMissesSound;
     [SerializeField] private AudioClip countdownSound;
+    [SerializeField] private AudioClip flipCardSound;
 
     private AudioSource audioSource;
 
@@ -61,5 +62,10 @@ public class SoundManager : MonoBehaviour
     public void EmitCountdownSound()
     {
         audioSource.PlayOneShot(countdownSound);
+    }
+
+    public void EmitFlipCardSound()
+    {
+        audioSource.PlayOneShot(flipCardSound); 
     }
 }

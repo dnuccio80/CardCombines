@@ -4371,6 +4371,7 @@ MonoBehaviour:
   matchSuccessSound: {fileID: 8300000, guid: 92b7027f95fb9d5449a59e94edb4f60c, type: 3}
   matchMissesSound: {fileID: 8300000, guid: 72cf69bf1e0aaf644a837fadc721fdfd, type: 3}
   countdownSound: {fileID: 8300000, guid: 68d13f64b492b0844bcbbf48efd74bd5, type: 3}
+  flipCardSound: {fileID: 8300000, guid: 7b4450939caece64295d9d4504b7ae7a, type: 3}
 --- !u!1001 &911217449
 PrefabInstance:
   m_ObjectHideFlags: 0
