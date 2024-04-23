@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
         CountdownToStart,
         GamePlaying,
         GamePaused,
-        GameOver
+        GameOver,
+        GameWin
     }
 
     private GameState gameState;
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E)) 
         {
-            ChangeGameState(GameState.GameOver);
+            ChangeGameState(GameState.GamePlaying);
         }
 
         switch(gameState)
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
             case GameState.GamePaused:
                 break;
             case GameState.GameOver:
+                break;
+            case GameState.GameWin: 
                 break;
         }
 
@@ -125,6 +128,11 @@ public class GameManager : MonoBehaviour
     public bool IsGamePlaying()
     {
         return gameState == GameState.GamePlaying;
+    }
+
+    public void TimerPlayingIsOver()
+    {
+        ChangeGameState(GameState.GameOver);
     }
     
 }

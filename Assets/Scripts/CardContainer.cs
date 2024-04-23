@@ -4,12 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 public class CardContainer : MonoBehaviour
 {
-    
+
+    [SerializeField] private float timer;
+
     List<Vector3> cardPositions = new List<Vector3>();
 
     private void Start()
     {
         GetCardPositions();
+        ClockUI.Instance.SetTimer(timer);
     }
 
     private void GetCardPositions()
