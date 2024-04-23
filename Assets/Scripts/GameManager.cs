@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E)) 
         {
-            ChangeGameState(GameState.GamePlaying);
+            ChangeGameState(GameState.CountdownToStart);
         }
 
         switch(gameState)
@@ -133,6 +133,16 @@ public class GameManager : MonoBehaviour
     public void TimerPlayingIsOver()
     {
         ChangeGameState(GameState.GameOver);
+    }
+
+    public void CountdownTimerOver()
+    {
+        ChangeGameState(GameState.GamePlaying);
+    }
+
+    public void GameWin()
+    {
+        ChangeGameState(GameState.GameWin);
     }
     
 }

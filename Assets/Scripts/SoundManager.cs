@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip loseGameSound;
     [SerializeField] private AudioClip matchSuccessSound;
     [SerializeField] private AudioClip matchMissesSound;
+    [SerializeField] private AudioClip countdownSound;
 
     private AudioSource audioSource;
 
@@ -55,5 +56,10 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(loseGameSound);
 
+    }
+
+    public void EmitCountdownSound()
+    {
+        audioSource.PlayOneShot(countdownSound);
     }
 }
