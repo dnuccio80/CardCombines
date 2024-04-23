@@ -9,21 +9,54 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnCardsMatches;
     public event EventHandler OnCardDoesNotMatches;
+    public event EventHandler<OnGameStateChangedEventArgs> OnGameStateChanged;
+
+    public class OnGameStateChangedEventArgs : EventArgs
+    {
+        public GameState gameState;
+    }
 
     private Card cardA;
     private Card cardB;
 
+    public enum GameState
+    {
+        WaitingToStart,
+        CountdownToStart,
+        GamePlaying,
+        GamePaused,
+        GameOver
+    }
+
+    private GameState gameState;
+
     private void Awake()
     {
         Instance = this;
+        gameState = GameState.WaitingToStart;
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)) 
         {
-            CleanCards();
+            ChangeGameState(GameState.GameOver);
         }
+
+        switch(gameState)
+        {
+            case GameState.WaitingToStart:
+                break; 
+            case GameState.CountdownToStart:
+                break;
+            case GameState.GamePlaying:
+                break;
+            case GameState.GamePaused:
+                break;
+            case GameState.GameOver:
+                break;
+        }
+
     }
 
     private void Start()
@@ -35,6 +68,15 @@ public class GameManager : MonoBehaviour
     {
         cardA.CardHasBennMatched();
         cardB.CardHasBennMatched();
+    }
+
+    private void ChangeGameState(GameState _gameState)
+    {
+        gameState = _gameState;
+        OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs
+        {
+            gameState = _gameState
+        });
     }
 
     public void FlipToFrontCard(Card card)
@@ -79,4 +121,10 @@ public class GameManager : MonoBehaviour
     {
         return cardA == null || cardB == null;
     }
+
+    public bool IsGamePlaying()
+    {
+        return gameState == GameState.GamePlaying;
+    }
+    
 }

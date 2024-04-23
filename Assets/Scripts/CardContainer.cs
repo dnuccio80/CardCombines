@@ -32,7 +32,6 @@ public class CardContainer : MonoBehaviour
 
             child.DOLocalMove(cardPositions[cardIndex], 1f);
             child.DOScale(Vector3.one, 1f);
-            //child.localPosition = cardPositions[cardIndex];
             cardPositions.RemoveAt(cardIndex);
         }
 

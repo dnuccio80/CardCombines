@@ -16,7 +16,7 @@ public class Card : MonoBehaviour
 
     public void CardClicked()
     {
-        if (cardMatched || cardVisual.IsCardFlippedToFront()) return;
+        if (cardMatched || cardVisual.IsCardFlippedToFront() || !GameManager.Instance.IsGamePlaying()) return;
 
         if(GameManager.Instance.GetCanFlipCard())
         {

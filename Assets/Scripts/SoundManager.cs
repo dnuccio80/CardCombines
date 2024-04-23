@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class SoudnManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    public static SoudnManager Instance {  get; private set; }
+    public static SoundManager Instance {  get; private set; }
 
     [SerializeField] private AudioClip winGameSound;
     [SerializeField] private AudioClip loseGameSound;
