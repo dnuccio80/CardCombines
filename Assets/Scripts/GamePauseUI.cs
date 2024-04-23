@@ -19,7 +19,7 @@ public class GamePauseUI : MonoBehaviour
 
         mainMenuButton.onClick.AddListener(() =>
         {
-
+            Loader.Load(Loader.Scene.MainMenuScene);
         });
 
         musicVolumeButton.onClick.AddListener(() =>
