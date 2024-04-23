@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class CardContainer : MonoBehaviour
 {
     
@@ -17,6 +17,8 @@ public class CardContainer : MonoBehaviour
         foreach(Transform child in transform)
         {
             cardPositions.Add(child.localPosition);
+            child.localPosition = new Vector3(-10f,0f,0f);
+            child.localScale = Vector3.one * 1.3f;
         }
 
         MixCards();
@@ -27,7 +29,10 @@ public class CardContainer : MonoBehaviour
         foreach (Transform child in transform)
         {
             int cardIndex = Random.Range(0, cardPositions.Count);
-            child.localPosition = cardPositions[cardIndex];
+
+            child.DOLocalMove(cardPositions[cardIndex], 1f);
+            child.DOScale(Vector3.one, 1f);
+            //child.localPosition = cardPositions[cardIndex];
             cardPositions.RemoveAt(cardIndex);
         }
 
