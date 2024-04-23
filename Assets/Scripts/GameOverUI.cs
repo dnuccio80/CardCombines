@@ -18,7 +18,7 @@ public class GameOverUI : MonoBehaviour
 
         mainMenuButton.onClick.AddListener(() =>
         {
-
+            Loader.Load(Loader.Scene.MainMenuScene);
         });
     }
 
