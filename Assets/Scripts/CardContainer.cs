@@ -6,8 +6,10 @@ public class CardContainer : MonoBehaviour
 {
 
     [SerializeField] private float timer;
-
+    private int cardsAmount;
     List<Vector3> cardPositions = new List<Vector3>();
+
+
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public class CardContainer : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
+            cardsAmount++;
             cardPositions.Add(child.localPosition);
             child.localPosition = new Vector3(-10f,0f,0f);
             child.localScale = Vector3.one * 1.3f;
@@ -38,6 +41,7 @@ public class CardContainer : MonoBehaviour
             cardPositions.RemoveAt(cardIndex);
         }
 
+        GameManager.Instance.ChangeCardsToMatchAmount(cardsAmount);
 
     }
 

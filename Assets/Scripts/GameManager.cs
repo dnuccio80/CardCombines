@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     private GameState gameState;
 
+    private int cardsToMatchAmount;
+
     private void Awake()
     {
         Instance = this;
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
     {
         cardA.CardHasBennMatched();
         cardB.CardHasBennMatched();
+
+        DecreaseCardToMatchAmount();
     }
 
     private void ChangeGameState(GameState _gameState)
@@ -143,6 +147,21 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         ChangeGameState(GameState.GameWin);
+    }
+
+    public void ChangeCardsToMatchAmount(int value)
+    {
+        cardsToMatchAmount = value;
+        Debug.Log(cardsToMatchAmount);
+    }
+
+    private void DecreaseCardToMatchAmount()
+    {
+        int cardsMatched = 2;
+
+        cardsToMatchAmount -= cardsMatched;
+
+        if (cardsToMatchAmount == 0) ChangeGameState(GameState.GameWin);
     }
     
 }
