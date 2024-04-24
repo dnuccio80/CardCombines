@@ -66,7 +66,6 @@ public class SoundManager : MonoBehaviour
     public void EmitWinGameSound()
     {
         audioSource.PlayOneShot(winGameSound);
-
     }
     public void EmitLoseGameSound()
     {

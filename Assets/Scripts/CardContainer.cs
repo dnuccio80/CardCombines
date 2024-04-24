@@ -37,7 +37,11 @@ public class CardContainer : MonoBehaviour
             int cardIndex = Random.Range(0, cardPositions.Count);
 
             child.DOLocalMove(cardPositions[cardIndex], 1f);
-            child.DOScale(Vector3.one, 1f);
+            child.DOScale(Vector3.one, 1f)
+                .OnComplete(() =>
+                {
+                    GameManager.Instance.StartCountdown();
+                });
             cardPositions.RemoveAt(cardIndex);
         }
 

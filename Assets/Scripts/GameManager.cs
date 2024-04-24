@@ -158,6 +158,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.GameWin);
     }
 
+    public void StartCountdown()
+    {
+        ChangeGameState(GameState.CountdownToStart);
+    }
+
     public void ChangeCardsToMatchAmount(int value)
     {
         cardsToMatchAmount = value;

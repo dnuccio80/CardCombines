@@ -20,6 +20,7 @@ public class GameWinUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        SoundManager.Instance.EmitWinGameSound();
     }
 
     private void Hide()
