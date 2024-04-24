@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class GamePauseUI : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button musicVolumeButton;
     [SerializeField] private Button soundVolumeButton;
+    [SerializeField] private TextMeshProUGUI musicVolumeText;
+    [SerializeField] private TextMeshProUGUI soundVolumeText;
 
     private void Awake()
     {
@@ -24,12 +27,14 @@ public class GamePauseUI : MonoBehaviour
 
         musicVolumeButton.onClick.AddListener(() =>
         {
-
+            MusicManager.Instance.IncrementMusicVolume();
+            UpdateVisual();
         });
 
         soundVolumeButton.onClick.AddListener(() =>
         {
-
+            SoundManager.Instance.IncrementSoundVolume();
+            UpdateVisual();
         });
     }
 
@@ -49,11 +54,19 @@ public class GamePauseUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         resumeButton.Select();
+        UpdateVisual();
     }
 
     private void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void UpdateVisual()
+    {
+        float soundMultiplier = 10f;
+        musicVolumeText.text = "Music Volume: " + Mathf.Round(MusicManager.Instance.GetMusicVolume() * soundMultiplier);
+        soundVolumeText.text = "Sound Volume: " + Mathf.Round(SoundManager.Instance.GetSoundVolume() * soundMultiplier);
     }
 
 

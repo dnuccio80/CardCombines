@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
@@ -7,6 +8,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance {  get; private set; }
 
+    private const string PLAYER_PREFS_SOUND_VOLUME = "SoundVolume";
+
+
+    public event EventHandler OnSoundVolumeChanged;
+
     [SerializeField] private AudioClip winGameSound;
     [SerializeField] private AudioClip loseGameSound;
     [SerializeField] private AudioClip matchSuccessSound;
@@ -15,6 +21,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip flipCardSound;
 
     private AudioSource audioSource;
+    private float volume;
 
     private void Awake()
     {
@@ -26,6 +33,14 @@ public class SoundManager : MonoBehaviour
     {
         GameManager.Instance.OnCardsMatches += GameManager_OnCardsMatches;
         GameManager.Instance.OnCardDoesNotMatches += GameManager_OnCardDoesNotMatches;
+        this.OnSoundVolumeChanged += SoundManager_OnSoundVolumeChanged;
+        SetSoundVolume();
+    }
+
+    private void SoundManager_OnSoundVolumeChanged(object sender, EventArgs e)
+    {
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_VOLUME, volume);
     }
 
     private void GameManager_OnCardsMatches(object sender, System.EventArgs e)
@@ -67,5 +82,24 @@ public class SoundManager : MonoBehaviour
     public void EmitFlipCardSound()
     {
         audioSource.PlayOneShot(flipCardSound); 
+    }
+
+    public void IncrementSoundVolume()
+    {
+        volume += .1f;
+        if(volume > 1f) volume = 0f;
+        OnSoundVolumeChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void SetSoundVolume()
+    {
+        float volumeDefect = .3f;
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_VOLUME, volumeDefect);
+        audioSource.volume = volume;
+    }
+
+    public float GetSoundVolume()
+    {
+        return volume;
     }
 }

@@ -161,7 +161,6 @@ public class GameManager : MonoBehaviour
     public void ChangeCardsToMatchAmount(int value)
     {
         cardsToMatchAmount = value;
-        Debug.Log(cardsToMatchAmount);
     }
 
     private void DecreaseCardToMatchAmount()
