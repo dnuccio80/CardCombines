@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip matchMissesSound;
     [SerializeField] private AudioClip countdownSound;
     [SerializeField] private AudioClip flipCardSound;
+    [SerializeField] private AudioClip selectButtonSound;
+
 
     private AudioSource audioSource;
     private float volume;
@@ -81,6 +83,11 @@ public class SoundManager : MonoBehaviour
     public void EmitFlipCardSound()
     {
         audioSource.PlayOneShot(flipCardSound); 
+    }
+
+    public void EmitSelectButtonSound()
+    {
+        audioSource.PlayOneShot(selectButtonSound);
     }
 
     public void IncrementSoundVolume()

@@ -8,16 +8,14 @@ public class WinLetters : MonoBehaviour
 {
 
     private float xShowposition;
-    private float xHidePosition;
-    private float yShowPosition;
+    private float xHidePosition = -1300f;
+    private float yShowPosition = 200f;
 
-    private void Start()
+     private void Start()
     {
         xShowposition = transform.localPosition.x;
-        yShowPosition = 200f;
-        xHidePosition = -1300f;
+        transform.localPosition = new Vector3(xHidePosition, 0, 0);
         GameWinUI.Instance.OnGameWinShow += GameWinUI_OnGameWinShow;
-        GameWinUI.Instance.OnGameWinHide += GameWinUI_OnGameWinHide;
     }
 
 
