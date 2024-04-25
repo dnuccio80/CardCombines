@@ -1,9 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameWinUI : MonoBehaviour
 {
+
+    public static GameWinUI Instance {  get; private set; }
+
+    public event EventHandler OnGameWinShow;
+    public event EventHandler OnGameWinHide;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -21,11 +32,13 @@ public class GameWinUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         SoundManager.Instance.EmitWinGameSound();
+        OnGameWinShow?.Invoke(this, EventArgs.Empty);
     }
 
     private void Hide()
     {
         gameObject.SetActive(false);
+        OnGameWinHide?.Invoke(this, EventArgs.Empty);
     }
 
 }
