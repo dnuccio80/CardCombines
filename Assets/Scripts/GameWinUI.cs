@@ -6,16 +6,8 @@ using UnityEngine;
 public class GameWinUI : MonoBehaviour
 {
 
-    public static GameWinUI Instance {  get; private set; }
-
     public event EventHandler OnGameWinShow;
     public event EventHandler OnGameWinHide;
-    public event EventHandler OnLettersAnimationDone;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {
@@ -42,8 +34,4 @@ public class GameWinUI : MonoBehaviour
         OnGameWinHide?.Invoke(this, EventArgs.Empty);
     }
 
-    public void LettersAnimationDone()
-    {
-        OnLettersAnimationDone?.Invoke(this,EventArgs.Empty);
-    }
 }

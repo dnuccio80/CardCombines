@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class WinLetters : MonoBehaviour
 {
+    [SerializeField] private GameWinUI gameWinUI;
 
     private float xShowposition;
     private float xHidePosition = -1300f;
@@ -15,7 +16,7 @@ public class WinLetters : MonoBehaviour
     {
         xShowposition = transform.localPosition.x;
         transform.localPosition = new Vector3(xHidePosition, 0, 0);
-        GameWinUI.Instance.OnGameWinShow += GameWinUI_OnGameWinShow;
+        gameWinUI.OnGameWinShow += GameWinUI_OnGameWinShow;
     }
 
 

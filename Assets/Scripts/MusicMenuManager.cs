@@ -5,8 +5,6 @@ using UnityEngine;
 public class MusicMenuManager : MonoBehaviour
 {
 
-    private const string PLAYER_PREFS_MUSIC_VOLUME = "MusicVolume";
-
     private AudioSource audioSource;
 
     private void Awake()
@@ -21,7 +19,7 @@ public class MusicMenuManager : MonoBehaviour
 
     private void SetMusicVolume()
     {
-        float volumeDefect = .3f;
-        audioSource.volume = PlayerPrefs.GetFloat(PLAYER_PREFS_MUSIC_VOLUME, volumeDefect);
+        float volume = .3f;
+        audioSource.volume = volume;
     }
 }

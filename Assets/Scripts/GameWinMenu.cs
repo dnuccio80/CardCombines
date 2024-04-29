@@ -9,18 +9,38 @@ public class GameWinMenu : MonoBehaviour
     private const string SHOW_ANIMATION = "Show";
     private const string HIDE_ANIMATION = "Hide";
 
+
+    [SerializeField] private GameWinUI gameWinUI;
     [SerializeField] private Button nextLevelButton;
+    [SerializeField] private Button goShopButton;
+    [SerializeField] private Button mainMenuButton;
 
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
+        nextLevelButton.onClick.AddListener(() =>
+        {
+
+        });
+
+        goShopButton.onClick.AddListener(() =>
+        {
+
+        });
+
+        mainMenuButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        });
+
     }
 
     private void Start()
     {
-        GameWinUI.Instance.OnGameWinShow += GameWinUI_OnGameWinShow;
+        gameWinUI.OnGameWinShow += GameWinUI_OnGameWinShow;
     }
 
     private void GameWinUI_OnGameWinShow(object sender, System.EventArgs e)

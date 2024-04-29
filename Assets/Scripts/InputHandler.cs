@@ -20,7 +20,14 @@ public class InputHandler : MonoBehaviour
 
         if(!rayHit.collider) return;
 
-        rayHit.collider.GetComponent<Card>().CardClicked();
+        if(rayHit.collider.TryGetComponent<Card>(out Card card))
+        {
+            card.CardClicked();
+        } else if(rayHit.collider.TryGetComponent<Potion>(out Potion potion))
+        {
+            potion.TryUsePotion();
+        }
+        
 
     }
 
