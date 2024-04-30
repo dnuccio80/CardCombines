@@ -7,9 +7,12 @@ using UnityEngine;
 public static class PlayerStats
 {
     public static event EventHandler OnCoinsAmountChange;
+    public static event EventHandler OnShowAllCardsAmontChange;
+    public static event EventHandler OnShowCardMatchAmountChange;
+    public static event EventHandler OnExtraTimeAmountChange;
 
     private static int coins;
-    private static int showCardsPotion;
+    private static int showAllCardsPotion;
     private static int showMatchCardPotion;
     private static int extraTimePotion;
 
@@ -19,18 +22,21 @@ public static class PlayerStats
         OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
     }
 
-    public static void IncrementShowCarddPotion() {
-        showCardsPotion++;
+    public static void IncrementShowAllCardsPotion(object value) {
+        showAllCardsPotion++;
+        OnShowAllCardsAmontChange?.Invoke(value, EventArgs.Empty);
     }
 
-    public static void IncrementShowMatchCardPotion()
+    public static void IncrementShowMatchCardPotion(object value)
     {
         showMatchCardPotion++;
+        OnShowCardMatchAmountChange?.Invoke(value, EventArgs.Empty);
     }
 
-    public static void IncrementExtraTimePotion()
+    public static void IncrementExtraTimePotion(object value)
     {
         extraTimePotion++;
+        OnExtraTimeAmountChange?.Invoke(value, EventArgs.Empty);
     }
 
     public static int GetCoinsAmount()
@@ -38,9 +44,9 @@ public static class PlayerStats
         return coins;
     }
 
-    public static int GetShowCardsPotionAmount()
+    public static int GetShowAllCardsPotionAmount()
     {
-        return showCardsPotion;
+        return showAllCardsPotion;
     }
 
     public static int GetShowMatchCardPotionAmount()

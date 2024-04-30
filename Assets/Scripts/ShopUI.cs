@@ -23,7 +23,7 @@ public class ShopUI : MonoBehaviour
 
     private void Start()
     {
-        Hide();
+        //Hide();
     }
 
     private void Show()
