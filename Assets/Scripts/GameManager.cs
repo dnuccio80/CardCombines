@@ -40,14 +40,6 @@ public class GameManager : MonoBehaviour
         gameState = GameState.WaitingToStart;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E)) 
-        {
-            ChangeGameState(GameState.CountdownToStart);
-        }
-     }
-
     private void Start()
     {
         this.OnCardsMatches += GameManager_OnCardsMatches;
@@ -97,12 +89,10 @@ public class GameManager : MonoBehaviour
     {
         if(cardA.GetCardName() == cardB.GetCardName())
         {
-            Debug.Log("Las cartas coinciden");
             OnCardsMatches?.Invoke(this,EventArgs.Empty);
             CleanCards();
         } else
         {
-            Debug.Log("Las cartas no coinciden");
             OnCardDoesNotMatches?.Invoke(this,EventArgs.Empty);
             cardA.CardDoesNotMatch();
             cardB.CardDoesNotMatch();
@@ -170,9 +160,9 @@ public class GameManager : MonoBehaviour
         else if (gameState == GameState.GamePaused) ChangeGameState(GameState.GamePlaying);
     }
 
-    public void StartGame(int levelNumber)
+    public void StartGame(int _levelNumber)
     {
-        this.levelNumber = levelNumber;
+        levelNumber = _levelNumber;
         ChangeGameState(GameState.WaitingToStart);
     }
 

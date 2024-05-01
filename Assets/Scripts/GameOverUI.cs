@@ -6,11 +6,17 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour
 {
 
+    [SerializeField] private Button tryAgainButton;
     [SerializeField] private Button selectionLevelButton;
     [SerializeField] private Button mainMenuButton;
 
     private void Awake()
     {
+        tryAgainButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.GameScene);
+        });
+
         selectionLevelButton.onClick.AddListener(() =>
         {
             Loader.Load(Loader.Scene.LevelSelectionShopScene);
@@ -42,7 +48,7 @@ public class GameOverUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
-        selectionLevelButton.Select();
+        tryAgainButton.Select();
     }
 
     private void Hide()

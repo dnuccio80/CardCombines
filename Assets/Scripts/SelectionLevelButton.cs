@@ -13,13 +13,19 @@ public class SelectionLevelButton : MonoBehaviour
 
     private Transform lockImage;
     private TextMeshProUGUI levelText;
-    
+    private Button button;
 
     private void Awake()
     {
         lockImage = transform.Find(LOCK_IMAGE);
         levelText = GetComponentInChildren<TextMeshProUGUI>();
+        button = GetComponent<Button>();
 
+        button.onClick.AddListener(() =>
+        {
+            PlayerStats.SetLevelToPlay(levelNumber);
+            Loader.Load(Loader.Scene.GameScene);
+        });
     }
 
     public void UpdateVisual()

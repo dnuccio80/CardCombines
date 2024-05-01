@@ -10,6 +10,7 @@ public class GamePauseUI : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button musicVolumeButton;
     [SerializeField] private Button soundVolumeButton;
+    [SerializeField] private Button selectLevelButton;
     [SerializeField] private TextMeshProUGUI musicVolumeText;
     [SerializeField] private TextMeshProUGUI soundVolumeText;
 
@@ -35,6 +36,11 @@ public class GamePauseUI : MonoBehaviour
         {
             SoundManager.Instance.IncrementSoundVolume();
             UpdateVisual();
+        });
+
+        selectLevelButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.LevelSelectionShopScene);
         });
     }
 
