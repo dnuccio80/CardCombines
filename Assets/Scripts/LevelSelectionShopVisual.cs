@@ -10,7 +10,6 @@ public class LevelSelectionShopVisual : MonoBehaviour
 
     public event EventHandler OnSelectLevelButtonPressed;
     public event EventHandler OnShopButtonPressed;
-    public event EventHandler OnOptionsButtonPressed;
 
     [SerializeField] private Button selectLevelButton;
     [SerializeField] private Button shopButton;

@@ -16,7 +16,8 @@ public static class PlayerStats
     private static int showAllCardsPotion;
     private static int showMatchCardPotion;
     private static int extraTimePotion;
-    private static int maxLevelCompleted = 10;
+    private static int maxLevelCompleted;
+    private static int levelToPlay;
 
     public static void IncrementCoinsAmount(object value)
     {
@@ -74,6 +75,15 @@ public static class PlayerStats
         return maxLevelCompleted;
     }
 
+    public static void SetLevelToPlay(int _levelToPlay)
+    {
+        levelToPlay = _levelToPlay;
+    }
+
+    public static int GetLevelToPlay()
+    {
+        return levelToPlay;
+    }
 
 
 }

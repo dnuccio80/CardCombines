@@ -25,12 +25,7 @@ public class CardContainer : MonoBehaviour
         {
             if (GameManager.Instance.GetLevelNumber() == levelNumber) Show();
             else Hide();
-        } else if(e.gameState == GameManager.GameState.SelectionLevel)
-        {
-            Hide();
-        }
-
-
+        } 
     }
 
     private void GetCardPositions()

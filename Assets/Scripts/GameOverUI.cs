@@ -13,7 +13,7 @@ public class GameOverUI : MonoBehaviour
     {
         selectionLevelButton.onClick.AddListener(() =>
         {
-            GameManager.Instance.GoToSelectionLevel();
+            Loader.Load(Loader.Scene.LevelSelectionShopScene);
         });
 
         mainMenuButton.onClick.AddListener(() =>
