@@ -14,13 +14,30 @@ public class LevelSelection : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
         UpdateAvailableButtons();
+
+    }
+
+    private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
+    {
+        if(e.gameState == GameManager.GameState.SelectionLevel)
+        {
+            Show();
+        } else
+        {
+            Hide();
+        }
+
+
     }
 
     private void Show()
     {
         gameObject.SetActive(true);
-        levelSelectionButtonArray[levelSelectionIndex].Select();
+        UpdateAvailableButtons();
+
+        //levelSelectionButtonArray[levelSelectionIndex].Select();
 
     }
 

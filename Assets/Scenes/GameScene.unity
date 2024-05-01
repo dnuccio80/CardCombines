@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7824262
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,7 +1336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &132723693
 Transform:
   m_ObjectHideFlags: 0
@@ -1371,6 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 15
+  levelNumber: 1
 --- !u!1 &143085615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &170262794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4592,7 +4593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &394570161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4606,6 +4607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 55
+  levelNumber: 4
 --- !u!4 &394570162
 Transform:
   m_ObjectHideFlags: 0
@@ -7780,7 +7782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &562165287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7794,6 +7796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 40
+  levelNumber: 3
 --- !u!4 &562165288
 Transform:
   m_ObjectHideFlags: 0
@@ -10737,7 +10740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728303737}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd46e6f7e82ee874dad05d1531998a55, type: 3}
   m_Name: 
@@ -18429,7 +18432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1236683486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18443,6 +18446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 70
+  levelNumber: 5
 --- !u!4 &1236683487
 Transform:
   m_ObjectHideFlags: 0
@@ -24718,7 +24722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1741350569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24732,6 +24736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 25
+  levelNumber: 2
 --- !u!4 &1741350570
 Transform:
   m_ObjectHideFlags: 0

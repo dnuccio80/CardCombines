@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,17 @@ public class SelectionLevelButton : MonoBehaviour
 
     private Transform lockImage;
     private TextMeshProUGUI levelText;
+    
 
     private void Awake()
     {
         lockImage = transform.Find(LOCK_IMAGE);
         levelText = GetComponentInChildren<TextMeshProUGUI>();
+
+        GetComponent<Button>().onClick.AddListener(() =>
+        {
+            GameManager.Instance.StartGame(levelNumber);
+        });
     }
 
     public void UpdateVisual()

@@ -6,15 +6,23 @@ public class CardContainer : MonoBehaviour
 {
 
     [SerializeField] private float timer;
+    [SerializeField] private int levelNumber;
     private int cardsAmount;
     List<Vector3> cardPositions = new List<Vector3>();
 
 
-
     private void Start()
     {
-        GetCardPositions();
-        ClockUI.Instance.SetTimer(timer);
+        GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+        Hide();
+    }
+
+    private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
+    {
+        if(e.gameState == GameManager.GameState.WaitingToStart && GameManager.Instance.GetLevelNumber() == levelNumber)
+        {
+            Show();
+        } 
     }
 
     private void GetCardPositions()
@@ -47,6 +55,19 @@ public class CardContainer : MonoBehaviour
 
         GameManager.Instance.ChangeCardsToMatchAmount(cardsAmount);
 
+    }
+
+    private void Show()
+    {
+        gameObject.SetActive(true);
+        ClockUI.Instance.SetTimer(timer);
+        GetCardPositions();
+    }
+
+    private void Hide()
+    {
+        cardPositions.Clear();
+        gameObject.SetActive(false);
     }
 
 
