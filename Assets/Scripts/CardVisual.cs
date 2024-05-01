@@ -5,6 +5,7 @@ public class CardVisual : MonoBehaviour
 {
     [SerializeField] private Sprite backCardImage;
     [SerializeField] private Card card;
+    private CardContainer cardContainer; 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Sprite frontImage;
@@ -22,6 +23,7 @@ public class CardVisual : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         currentSide = CardSide.back;
+        cardContainer = GetComponentInParent<CardContainer>();
     }
     private void Start()
     {
@@ -30,6 +32,12 @@ public class CardVisual : MonoBehaviour
 
         card.OnCardClicked += Card_OnCardClicked;
         card.OnIncorrectCardFlipped += Card_OnIncorrectCardFlipped;
+        cardContainer.OnCardContainerHide += CardContainer_OnCardContainerHide;
+    }
+
+    private void CardContainer_OnCardContainerHide(object sender, System.EventArgs e)
+    {
+        FlipToBack();
     }
 
     private void Card_OnIncorrectCardFlipped(object sender, System.EventArgs e)

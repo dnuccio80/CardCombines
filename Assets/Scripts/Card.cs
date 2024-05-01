@@ -9,6 +9,7 @@ public class Card : MonoBehaviour
     public event EventHandler OnCardClicked;
     public event EventHandler OnIncorrectCardFlipped;
 
+
     [SerializeField] private CardVisual cardVisual;
     [SerializeField] private CardSO cardSO;
 

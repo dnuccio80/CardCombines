@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 public class CardContainer : MonoBehaviour
 {
+    public event EventHandler OnCardContainerHide;
 
     [SerializeField] private float timer;
     [SerializeField] private int levelNumber;
@@ -19,10 +21,16 @@ public class CardContainer : MonoBehaviour
 
     private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
-        if(e.gameState == GameManager.GameState.WaitingToStart && GameManager.Instance.GetLevelNumber() == levelNumber)
+        if(e.gameState == GameManager.GameState.WaitingToStart)
         {
-            Show();
-        } 
+            if (GameManager.Instance.GetLevelNumber() == levelNumber) Show();
+            else Hide();
+        } else if(e.gameState == GameManager.GameState.SelectionLevel)
+        {
+            Hide();
+        }
+
+
     }
 
     private void GetCardPositions()
@@ -42,7 +50,7 @@ public class CardContainer : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            int cardIndex = Random.Range(0, cardPositions.Count);
+            int cardIndex = UnityEngine.Random.Range(0, cardPositions.Count);
 
             child.DOLocalMove(cardPositions[cardIndex], 1f);
             child.DOScale(Vector3.one, 1f)
@@ -67,6 +75,7 @@ public class CardContainer : MonoBehaviour
     private void Hide()
     {
         cardPositions.Clear();
+        OnCardContainerHide?.Invoke(this, EventArgs.Empty);
         gameObject.SetActive(false);
     }
 

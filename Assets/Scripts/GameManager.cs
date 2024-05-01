@@ -95,7 +95,6 @@ public class GameManager : MonoBehaviour
         {
             gameState = _gameState
         });
-        Debug.Log("Game state: " + gameState + ", levelNumber: " + levelNumber);
     }
 
     public void FlipToFrontCard(Card card)
@@ -177,7 +176,11 @@ public class GameManager : MonoBehaviour
 
         cardsToMatchAmount -= cardsMatched;
 
-        if (cardsToMatchAmount == 0) ChangeGameState(GameState.GameWin);
+        if (cardsToMatchAmount == 0)
+        {
+            ChangeGameState(GameState.GameWin);
+            PlayerStats.ChangeMaxLevelCompleted(this,levelNumber);
+        } 
     }
 
     public void ToggleGamePause()
@@ -190,6 +193,11 @@ public class GameManager : MonoBehaviour
     {
         this.levelNumber = levelNumber;
         ChangeGameState(GameState.WaitingToStart);
+    }
+
+    public void GoToSelectionLevel()
+    {
+        ChangeGameState(GameState.SelectionLevel);
     }
 
     public int GetLevelNumber()

@@ -2,12 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameWinUI : MonoBehaviour
 {
 
     public event EventHandler OnGameWinShow;
     public event EventHandler OnGameWinHide;
+    [SerializeField] private Button selectionLevelButton;
+    [SerializeField] private Button mainMenuButton;
+
+    private void Awake()
+    {
+        selectionLevelButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.GoToSelectionLevel();
+        });
+
+        mainMenuButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        });
+    }
 
     private void Start()
     {
@@ -26,6 +42,7 @@ public class GameWinUI : MonoBehaviour
         gameObject.SetActive(true);
         SoundManager.Instance.EmitWinGameSound();
         OnGameWinShow?.Invoke(this, EventArgs.Empty);
+        selectionLevelButton.Select();
     }
 
     private void Hide()
