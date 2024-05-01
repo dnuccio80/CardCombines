@@ -20,10 +20,6 @@ public class SelectionLevelButton : MonoBehaviour
         lockImage = transform.Find(LOCK_IMAGE);
         levelText = GetComponentInChildren<TextMeshProUGUI>();
 
-        GetComponent<Button>().onClick.AddListener(() =>
-        {
-            GameManager.Instance.StartGame(levelNumber);
-        });
     }
 
     public void UpdateVisual()

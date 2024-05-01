@@ -6,24 +6,26 @@ using UnityEngine.UI;
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private Button backButton;
-    [SerializeField] private Button mainMenuButton;
 
     private void Awake()
     {
         backButton.onClick.AddListener(() =>
         {
-
+            Hide();
+            LevelSelectionShopVisual.Instance.SelectButton();
         });
 
-        mainMenuButton.onClick.AddListener(() =>
-        {
-            Loader.Load(Loader.Scene.MainMenuScene);
-        });
     }
 
     private void Start()
     {
-        //Hide();
+        LevelSelectionShopVisual.Instance.OnShopButtonPressed += LevelSelectionShopVisual_OnShopButtonPressed;
+        Hide();
+    }
+
+    private void LevelSelectionShopVisual_OnShopButtonPressed(object sender, System.EventArgs e)
+    {
+        Show();
     }
 
     private void Show()

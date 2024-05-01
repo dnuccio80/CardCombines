@@ -8,37 +8,35 @@ public class LevelSelection : MonoBehaviour
 {
 
     [SerializeField] private Button[] levelSelectionButtonArray;
+    [SerializeField] private Button backButton;
     
     private int levelSelectionIndex;
     private int maxLevelCompleted;
 
-    private void Start()
+    private void Awake()
     {
-        GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
-        UpdateAvailableButtons();
-
-    }
-
-    private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
-    {
-        if(e.gameState == GameManager.GameState.SelectionLevel)
-        {
-            Show();
-        } else
+        backButton.onClick.AddListener(() =>
         {
             Hide();
-        }
+            LevelSelectionShopVisual.Instance.SelectButton();
+        });
+    }
 
+    private void Start()
+    {
+        LevelSelectionShopVisual.Instance.OnSelectLevelButtonPressed += LevelSelectionShopVisual_OnSelectLevelButtonPressed;
+        Hide();
+    }
 
+    private void LevelSelectionShopVisual_OnSelectLevelButtonPressed(object sender, System.EventArgs e)
+    {
+        Show();
     }
 
     private void Show()
     {
         gameObject.SetActive(true);
         UpdateAvailableButtons();
-
-        //levelSelectionButtonArray[levelSelectionIndex].Select();
-
     }
 
     private void Hide()
