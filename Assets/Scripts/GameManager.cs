@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
     private int cardsToMatchAmount;
     private int levelNumber;
 
+    // Countdown system
+    private float countdownTimer;
+    private float countdownTimerMax = 3f;
+    private int previousCountdownNumber;
+
     private void Awake()
     {
         Instance = this;
@@ -50,7 +55,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        switch(gameState)
+        {
+            case GameState.LevelSelection:
+                countdownTimer = countdownTimerMax;
+                break;
+            case GameState.CountdownToStart:
+                countdownTimer -= Time.deltaTime;
+                if(countdownTimer <= 0 )
+                {
+                    ChangeGameState(GameState.GamePlaying);
+                }
+                break;
+            case GameState.GamePlaying:
+                countdownTimer = countdownTimerMax;
+                break;
 
+        }
     }
 
     private void GameManager_OnGameStateChanged(object sender, OnGameStateChangedEventArgs e)
@@ -175,6 +196,11 @@ public class GameManager : MonoBehaviour
     public int GetLevelNumber()
     {
         return levelNumber;
+    }
+
+    public float GetCountdownTimer()
+    {
+        return countdownTimer;
     }
     
 }

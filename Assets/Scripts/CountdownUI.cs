@@ -36,9 +36,9 @@ public class CountdownUI : MonoBehaviour
 
     private void Update()
     {
-        countdownTimer -= Time.deltaTime;
+        //countdownTimer -= Time.deltaTime;
 
-        int countdownNumber = Mathf.CeilToInt(countdownTimer);
+        int countdownNumber = Mathf.CeilToInt(GameManager.Instance.GetCountdownTimer());
 
         if (previousCountdownNumber != countdownNumber)
         {
@@ -47,9 +47,9 @@ public class CountdownUI : MonoBehaviour
             SoundManager.Instance.EmitCountdownSound();
         }
 
-        UpdateVisual();
+        countdownTimerText.text = countdownNumber.ToString();
 
-        if (countdownTimer <= 0) GameManager.Instance.CountdownTimerOver();
+        //if (countdownTimer <= 0) GameManager.Instance.CountdownTimerOver();
     }
 
     private void Show()
