@@ -23,8 +23,7 @@ public class SelectionLevelButton : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
-            PlayerStats.SetLevelToPlay(levelNumber);
-            Loader.Load(Loader.Scene.GameScene);
+            GameManager.Instance.StartGame(levelNumber);
         });
     }
 

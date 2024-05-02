@@ -20,7 +20,13 @@ public class ShopUI : MonoBehaviour
     private void Start()
     {
         LevelSelectionShopVisual.Instance.OnShopButtonPressed += LevelSelectionShopVisual_OnShopButtonPressed;
+        GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
         Hide();
+    }
+
+    private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
+    {
+        if (e.gameState != GameManager.GameState.LevelSelection) Hide();
     }
 
     private void LevelSelectionShopVisual_OnShopButtonPressed(object sender, System.EventArgs e)

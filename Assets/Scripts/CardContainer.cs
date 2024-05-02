@@ -29,11 +29,11 @@ public class CardContainer : MonoBehaviour
 
     private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
-        if(e.gameState == GameManager.GameState.WaitingToStart)
-        {
-            if (GameManager.Instance.GetLevelNumber() == levelNumber) Show();
-            else Hide();
-        } 
+        //if(e.gameState == GameManager.GameState.WaitingToStart)
+        //{
+        //    if (GameManager.Instance.GetLevelNumber() == levelNumber) Show();
+        //    else Hide();
+        //} 
     }
 
     private void GetCardPositions()

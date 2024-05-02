@@ -39,10 +39,32 @@ public class LevelSelectionShopVisual : MonoBehaviour
     private void Start()
     {
         SelectButton();
+        GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+
+    private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
+    {
+       if(e.gameState == GameManager.GameState.LevelSelection)
+        {
+            Show();
+        } else
+        {
+            Hide();
+        }
     }
 
     public void SelectButton()
     {
         selectLevelButton.Select();
+    }
+
+    private void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

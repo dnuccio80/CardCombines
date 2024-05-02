@@ -15,10 +15,11 @@ public class LevelContainer : MonoBehaviour
 
     private void GamaManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
-        if(e.gameState == GameManager.GameState.CountDownNew && GameManager.Instance.GetLevelNumber() == levelNumber)
+        if (e.gameState == GameManager.GameState.CountdownToStart && GameManager.Instance.GetLevelNumber() == levelNumber)
         {
             Show();
-        } else
+        }
+        else
         {
             Hide();
         }
