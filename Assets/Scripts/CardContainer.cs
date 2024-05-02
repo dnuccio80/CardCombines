@@ -9,9 +9,17 @@ public class CardContainer : MonoBehaviour
 
     [SerializeField] private float timer;
     [SerializeField] private int levelNumber;
+    
+    private Transform levelContainerTransform; 
     private int cardsAmount;
+    
     List<Vector3> cardPositions = new List<Vector3>();
 
+
+    private void Awake()
+    {
+        levelContainerTransform = GetComponentInParent<LevelContainer>().transform;
+    }
 
     private void Start()
     {
@@ -63,6 +71,7 @@ public class CardContainer : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        levelContainerTransform.gameObject.SetActive(true);
         ClockUI.Instance.SetTimer(timer);
         GetCardPositions();
     }
@@ -70,6 +79,7 @@ public class CardContainer : MonoBehaviour
     private void Hide()
     {
         cardPositions.Clear();
+        levelContainerTransform.gameObject.SetActive(false);
         OnCardContainerHide?.Invoke(this, EventArgs.Empty);
         gameObject.SetActive(false);
     }

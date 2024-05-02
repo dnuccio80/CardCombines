@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
+        Wait,
         WaitingToStart,
+        CountDownNew,
         CountdownToStart,
         GamePlaying,
         GamePaused,
@@ -37,14 +39,28 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        gameState = GameState.WaitingToStart;
+        gameState = GameState.Wait;
+        //StartGame(PlayerStats.GetLevelToPlay());
+
     }
 
     private void Start()
     {
         this.OnCardsMatches += GameManager_OnCardsMatches;
         this.OnGameStateChanged += GameManager_OnGameStateChanged;
-        StartGame(PlayerStats.GetLevelToPlay());
+        StartGame();
+
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            //levelNumber = PlayerStats.GetLevelToPlay();
+            //ChangeGameState(GameState.CountDownNew);
+            StartGame();
+            Debug.Log(gameState + " " +  levelNumber);
+        }
     }
 
     private void GameManager_OnGameStateChanged(object sender, OnGameStateChangedEventArgs e)
@@ -160,10 +176,13 @@ public class GameManager : MonoBehaviour
         else if (gameState == GameState.GamePaused) ChangeGameState(GameState.GamePlaying);
     }
 
-    public void StartGame(int _levelNumber)
+    public void StartGame()
     {
-        levelNumber = _levelNumber;
-        ChangeGameState(GameState.WaitingToStart);
+        levelNumber = PlayerStats.GetLevelToPlay();
+        ChangeGameState(GameState.CountDownNew);
+
+        Debug.Log(levelNumber);
+        Debug.Log(gameState);
     }
 
     public int GetLevelNumber()
