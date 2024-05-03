@@ -34,10 +34,12 @@ public class GameManager : MonoBehaviour
     private int cardsToMatchAmount;
     private int levelNumber;
 
-    // Countdown system
+    // CountdownToStart System
     private float countdownTimer;
     private float countdownTimerMax = 3f;
-    private int previousCountdownNumber;
+
+    // GamePlaying System
+    private float playingTimer;
 
     private void Awake()
     {
@@ -69,6 +71,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GamePlaying:
                 countdownTimer = countdownTimerMax;
+                playingTimer -= Time.deltaTime;
+                if (playingTimer <= 0) ChangeGameState(GameState.GameOver);
                 break;
 
         }
@@ -143,26 +147,6 @@ public class GameManager : MonoBehaviour
         return gameState == GameState.GamePlaying;
     }
 
-    public void TimerPlayingIsOver()
-    {
-        ChangeGameState(GameState.GameOver);
-    }
-
-    public void CountdownTimerOver()
-    {
-        ChangeGameState(GameState.GamePlaying);
-    }
-
-    public void GameWin()
-    {
-        ChangeGameState(GameState.GameWin);
-    }
-
-    public void StartCountdown()
-    {
-        ChangeGameState(GameState.CountdownToStart);
-    }
-
     public void ChangeCardsToMatchAmount(int value)
     {
         cardsToMatchAmount = value;
@@ -201,6 +185,17 @@ public class GameManager : MonoBehaviour
     public float GetCountdownTimer()
     {
         return countdownTimer;
+    }
+
+    public float GetPlayingTimer()
+    {
+        return playingTimer;
+    }
+
+    public void SetPlayingConfig(float _timer, int cardsAmount)
+    {
+        playingTimer = _timer;
+        cardsToMatchAmount = cardsAmount;
     }
     
 }

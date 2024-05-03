@@ -23,38 +23,34 @@ public class ClockUI : MonoBehaviour
     {
         GameManager.Instance.OnGameStateChanged += GameManger_OnGameStateChanged;
         timerText.text = string.Empty;
+        Hide();
     }
 
     private void GameManger_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
         isGamePlaying = e.gameState == GameManager.GameState.GamePlaying;
+        (e.gameState != GameManager.GameState.LevelSelection ? (Action)Show : Hide)();
     }
 
     private void Update()
     {
         if (isGamePlaying)
         {
-            timer -= Time.deltaTime;
-            UpdateVisual();
-
-            if (timer <= 0) GameManager.Instance.TimerPlayingIsOver();
-
+            UpdateVisual(GameManager.Instance.GetPlayingTimer());
         }
     }
 
-
-    public void SetTimer(float _timer)
+    private void Show()
     {
-        TimerMax = _timer;
-        ResetTimer();
+        gameObject.SetActive(true);
     }
 
-    private void ResetTimer()
+    private void Hide()
     {
-        timer = TimerMax;
+        gameObject.SetActive(false);
     }
 
-    private void UpdateVisual()
+    private void UpdateVisual(float timer)
     {
         timerText.text = MathF.Round(timer).ToString();
     }

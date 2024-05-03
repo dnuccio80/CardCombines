@@ -9,14 +9,14 @@ public class GameWinUI : MonoBehaviour
 
     public event EventHandler OnGameWinShow;
     public event EventHandler OnGameWinHide;
-    [SerializeField] private Button selectionLevelButton;
+    [SerializeField] private Button gameMenuButton;
     [SerializeField] private Button mainMenuButton;
 
     private void Awake()
     {
-        selectionLevelButton.onClick.AddListener(() =>
+        gameMenuButton.onClick.AddListener(() =>
         {
-            Loader.Load(Loader.Scene.LevelSelectionShopScene);
+            Loader.Load(Loader.Scene.GameScene);
         });
 
         mainMenuButton.onClick.AddListener(() =>
@@ -42,7 +42,7 @@ public class GameWinUI : MonoBehaviour
         gameObject.SetActive(true);
         SoundManager.Instance.EmitWinGameSound();
         OnGameWinShow?.Invoke(this, EventArgs.Empty);
-        selectionLevelButton.Select();
+        gameMenuButton.Select();
     }
 
     private void Hide()

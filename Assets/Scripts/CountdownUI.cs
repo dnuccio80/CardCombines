@@ -11,12 +11,7 @@ public class CountdownUI : MonoBehaviour
     private const string POPUP_ANIMATION = "PopupNumber";
 
     private Animator animator;
-    private float countdownTimer;
-    private float countdownTimerMax = 3f;
     private int previousCountdownNumber;
-
-
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -36,7 +31,6 @@ public class CountdownUI : MonoBehaviour
 
     private void Update()
     {
-        //countdownTimer -= Time.deltaTime;
 
         int countdownNumber = Mathf.CeilToInt(GameManager.Instance.GetCountdownTimer());
 
@@ -49,13 +43,11 @@ public class CountdownUI : MonoBehaviour
 
         countdownTimerText.text = countdownNumber.ToString();
 
-        //if (countdownTimer <= 0) GameManager.Instance.CountdownTimerOver();
     }
 
     private void Show()
     {
         gameObject.SetActive(true);
-        countdownTimer = countdownTimerMax;
     }
 
     private void Hide()
@@ -63,8 +55,4 @@ public class CountdownUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void UpdateVisual()
-    {
-        countdownTimerText.text = Mathf.CeilToInt(countdownTimer).ToString();
-    }
 }
