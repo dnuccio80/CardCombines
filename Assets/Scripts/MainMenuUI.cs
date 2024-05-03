@@ -15,7 +15,7 @@ public class MainMenuUI : MonoBehaviour
 
         playGameButton.onClick.AddListener(() =>
         {
-            Loader.Load(Loader.Scene.LevelSelectionShopScene);
+            Loader.Load(Loader.Scene.GameScene);
         });
 
         howToPlayButton.onClick.AddListener(() =>

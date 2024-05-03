@@ -13,12 +13,12 @@ public class CoinAmount : MonoBehaviour
         PlayerStats.OnCoinsAmountChange += PlayerStats_OnCoinsAmountChange;
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
         UpdateVisual();
-        Hide();
+        //Hide();
     }
 
     private void GameManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
-        (e.gameState != GameManager.GameState.LevelSelection ? (Action)Show : Hide)();
+        //(e.gameState != GameManager.GameState.LevelSelection ? (Action)Show : Hide)();
     }
 
     private void PlayerStats_OnCoinsAmountChange(object sender, System.EventArgs e)
