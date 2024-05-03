@@ -17,6 +17,8 @@ public class VaultVisual : MonoBehaviour
         PlayerStats.OnShowCardMatchAmountChange += PlayerStats_OnShowCardMatchAmountChange;
         PlayerStats.OnExtraTimeAmountChange += PlayerStats_OnExtraTimeAmountChange;
         PlayerStats.OnShowAllCardsAmontChange += PlayerStats_OnShowAllCardsAmontChange;
+
+        UpdateVisual();
     }
 
     private void PlayerStats_OnShowAllCardsAmontChange(object sender, System.EventArgs e)

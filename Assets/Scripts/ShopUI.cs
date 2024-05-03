@@ -6,14 +6,21 @@ using UnityEngine.UI;
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private Button backButton;
+    [SerializeField] private Button sellPotionsButton;
 
     private void Awake()
     {
+        sellPotionsButton.onClick.AddListener(() =>
+        {
+            
+        });
+
         backButton.onClick.AddListener(() =>
         {
             Hide();
             LevelSelectionShopVisual.Instance.SelectButton();
         });
+
 
     }
 
@@ -37,7 +44,7 @@ public class ShopUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
-        backButton.Select();
+        sellPotionsButton.Select();
     }
 
     private void Hide()
