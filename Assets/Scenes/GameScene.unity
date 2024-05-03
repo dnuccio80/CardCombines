@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 18028877}
   - component: {fileID: 18028876}
   m_Layer: 5
-  m_Name: Amount
+  m_Name: ShowMatchCardAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15527,7 +15527,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737883099}
-  - component: {fileID: 737883100}
   m_Layer: 5
   m_Name: ExtraTimeVisual
   m_TagString: Untagged
@@ -15556,19 +15555,6 @@ RectTransform:
   m_AnchoredPosition: {x: -336.9, y: -72}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &737883100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737883098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fabf01978995f54ca827faed6bf4f4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionAmountText: {fileID: 1776571790}
 --- !u!1 &740898290
 GameObject:
   m_ObjectHideFlags: 0
@@ -22204,7 +22190,7 @@ GameObject:
   - component: {fileID: 1085264336}
   - component: {fileID: 1085264335}
   m_Layer: 5
-  m_Name: Amount
+  m_Name: ShowAllCardsAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23627,7 +23613,7 @@ GameObject:
   - component: {fileID: 1161324156}
   - component: {fileID: 1161324155}
   m_Layer: 5
-  m_Name: CoinAmount
+  m_Name: CoinAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26810,7 +26796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1297680571}
   m_Layer: 5
-  m_Name: Container
+  m_Name: PotionsShopVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28009,7 +27995,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376443713}
-  - component: {fileID: 1376443714}
   m_Layer: 5
   m_Name: ShowAllCardsVisual
   m_TagString: Untagged
@@ -28038,19 +28023,6 @@ RectTransform:
   m_AnchoredPosition: {x: -336.9, y: -207.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1376443714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376443712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fc67f0414b2c0418e09276ffe81b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionAmountText: {fileID: 1085264335}
 --- !u!1 &1383855015
 GameObject:
   m_ObjectHideFlags: 0
@@ -35444,7 +35416,7 @@ GameObject:
   - component: {fileID: 1776571791}
   - component: {fileID: 1776571790}
   m_Layer: 5
-  m_Name: Amount
+  m_Name: ExtraTimeAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36706,7 +36678,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837135266}
-  - component: {fileID: 1837135267}
   m_Layer: 5
   m_Name: ShowMatchCardVisual
   m_TagString: Untagged
@@ -36735,19 +36706,6 @@ RectTransform:
   m_AnchoredPosition: {x: -336.9, y: -138.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1837135267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837135265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 849fdd81dd8282d488c1ed74738cd034, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionAmountText: {fileID: 18028876}
 --- !u!1 &1837825056
 GameObject:
   m_ObjectHideFlags: 0
@@ -41305,6 +41263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2061537330}
+  - component: {fileID: 2061537331}
   m_Layer: 5
   m_Name: VaultVisual
   m_TagString: Untagged
@@ -41337,6 +41296,22 @@ RectTransform:
   m_AnchoredPosition: {x: 205.12506, y: 166.225}
   m_SizeDelta: {x: 452.2, y: 313.6}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2061537331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061537329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee61261cf88adf418dbec112b5ec8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinAmountText: {fileID: 1161324155}
+  extraTimeAmountText: {fileID: 1776571790}
+  showMatchCardAmountText: {fileID: 18028876}
+  showAllCardsAmountTexts: {fileID: 1085264335}
 --- !u!1 &2067846444
 GameObject:
   m_ObjectHideFlags: 0
