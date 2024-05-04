@@ -31,6 +31,7 @@ public class WarningBuyMessage : MonoBehaviour
         Show();
     }
 
+
     private void Update()
     {
         if (showMessage)
