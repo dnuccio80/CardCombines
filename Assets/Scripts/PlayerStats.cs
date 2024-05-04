@@ -12,6 +12,7 @@ public static class PlayerStats
     public static event EventHandler OnShowCardMatchAmountChange;
     public static event EventHandler OnExtraTimeAmountChange;
     public static event EventHandler OnMaxLevelCompletedChange;
+    public static event EventHandler OnWithoutEnoughCoins;
 
     private static int coins = 75;
     private static int showAllCardsPotion;
@@ -37,7 +38,7 @@ public static class PlayerStats
         }
         else
         {
-            Debug.Log("need more coins!!! ");
+            OnWithoutEnoughCoins?.Invoke(value, EventArgs.Empty);
         }
 
     }
@@ -53,7 +54,8 @@ public static class PlayerStats
         }
         else
         {
-            Debug.Log("need more coins!!! ");
+            OnWithoutEnoughCoins?.Invoke(value, EventArgs.Empty);
+
         }
     }
 
@@ -68,7 +70,8 @@ public static class PlayerStats
         }
         else
         {
-            Debug.Log("need more coins!!! ");
+            OnWithoutEnoughCoins?.Invoke(value, EventArgs.Empty);
+
         }
     }
 

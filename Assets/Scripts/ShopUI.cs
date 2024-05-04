@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,20 +6,39 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    [SerializeField] private Button backButton;
+
     [SerializeField] private Button sellPotionsButton;
+    [SerializeField] private Button backBuyMenuButton;
+    [SerializeField] private Button dealButton;
+    [SerializeField] private Button backSellMenuButton;
+    [SerializeField] private Transform buyShop;
+    [SerializeField] private Transform sellShop;
 
     private void Awake()
     {
         sellPotionsButton.onClick.AddListener(() =>
         {
-            
+            buyShop.gameObject.SetActive(false);
+            sellShop.gameObject.SetActive(true);
+            dealButton.Select();
         });
 
-        backButton.onClick.AddListener(() =>
+        backBuyMenuButton.onClick.AddListener(() =>
         {
             Hide();
             LevelSelectionShopVisual.Instance.SelectButton();
+        });
+
+        dealButton.onClick.AddListener(() =>
+        {
+
+        });
+
+        backSellMenuButton.onClick.AddListener(() =>
+        {
+            buyShop.gameObject.SetActive(true);
+            sellShop.gameObject.SetActive(false);
+            sellPotionsButton.Select();
         });
 
 
@@ -28,6 +48,7 @@ public class ShopUI : MonoBehaviour
     {
         LevelSelectionShopVisual.Instance.OnShopButtonPressed += LevelSelectionShopVisual_OnShopButtonPressed;
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+        sellShop.gameObject.SetActive(false);
         Hide();
     }
 
