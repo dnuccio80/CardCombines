@@ -166,6 +166,8 @@ public class SellPotsContainer : MonoBehaviour
         showMatchCards_amountText.text = "0";
         showAllCards_amountText.text = "0";
 
+
+
         UpdateCoinsVisual();
     }
 }
