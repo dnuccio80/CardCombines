@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    public event EventHandler OnDealButtonPressed;
 
     [SerializeField] private Button sellPotionsButton;
     [SerializeField] private Button backBuyMenuButton;
@@ -31,7 +32,7 @@ public class ShopUI : MonoBehaviour
 
         dealButton.onClick.AddListener(() =>
         {
-
+            OnDealButtonPressed?.Invoke(this, EventArgs.Empty);
         });
 
         backSellMenuButton.onClick.AddListener(() =>

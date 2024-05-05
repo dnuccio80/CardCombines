@@ -3757,7 +3757,7 @@ GameObject:
   - component: {fileID: 161523615}
   - component: {fileID: 161523614}
   m_Layer: 5
-  m_Name: QuantityText
+  m_Name: ExtraTime_QuantityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11845,7 +11845,7 @@ GameObject:
   - component: {fileID: 513012223}
   - component: {fileID: 513012222}
   m_Layer: 5
-  m_Name: QuantityText
+  m_Name: ShowMatchCards_QuantityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19044,7 +19044,7 @@ GameObject:
   - component: {fileID: 811551704}
   - component: {fileID: 811551703}
   m_Layer: 5
-  m_Name: QuantityText
+  m_Name: ShowAllCards_QuantityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35358,8 +35358,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1548919109}
   - component: {fileID: 1548919110}
+  - component: {fileID: 1548919111}
   m_Layer: 5
-  m_Name: PotsContainer
+  m_Name: SellPotsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35415,6 +35416,31 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1548919111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548919108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe3fbe25e93f0a458859856d78fd4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraTime_subtractButton: {fileID: 1470018018}
+  extraTime_additionButton: {fileID: 1913876658}
+  extraTime_amountText: {fileID: 161523614}
+  showMatchCards_subtractButton: {fileID: 116500302}
+  showMatchCards_additionButton: {fileID: 1054382216}
+  showMatchCards_amountText: {fileID: 513012222}
+  showAllCards_subtractButton: {fileID: 1648793816}
+  showAllCards_additionButton: {fileID: 1662923357}
+  showAllCards_amountText: {fileID: 811551703}
+  extraTimeButton: {fileID: 1396131663}
+  showMatchCardsButton: {fileID: 468223795}
+  showAllCardsButton: {fileID: 2085269066}
+  coinsAmountText: {fileID: 1928228272}
 --- !u!1001 &1551840339
 PrefabInstance:
   m_ObjectHideFlags: 0

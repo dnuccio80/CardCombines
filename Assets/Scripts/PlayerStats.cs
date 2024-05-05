@@ -27,20 +27,20 @@ public static class PlayerStats
         OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
     }
 
-    public static void TryIncrementShowAllCardsPotion(object value, int cost) {
-        
+    public static void TryIncrementExtraTimePotion(object value, int cost)
+    {
         if(coins >= cost)
         {
-            showAllCardsPotion++;
+            extraTimePotion++;
             coins -= cost;
-            OnShowAllCardsAmontChange?.Invoke(value, EventArgs.Empty);
+            OnExtraTimeAmountChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
         }
         else
         {
             OnWithoutEnoughCoins?.Invoke(value, EventArgs.Empty);
-        }
 
+        }
     }
 
     public static void TryIncrementShowMatchCardPotion(object value, int cost)
@@ -59,20 +59,28 @@ public static class PlayerStats
         }
     }
 
-    public static void TryIncrementExtraTimePotion(object value, int cost)
-    {
+    public static void TryIncrementShowAllCardsPotion(object value, int cost) {
+        
         if(coins >= cost)
         {
-            extraTimePotion++;
+            showAllCardsPotion++;
             coins -= cost;
-            OnExtraTimeAmountChange?.Invoke(value, EventArgs.Empty);
+            OnShowAllCardsAmontChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
         }
         else
         {
             OnWithoutEnoughCoins?.Invoke(value, EventArgs.Empty);
-
         }
+
+    }
+    public static void SellPotions(int extraTimePotionsToSell, int showMatchCardsPotionsToSell, int showAllCardsPotionsToSell, int coinsEarned)
+    {
+        extraTimePotion -= extraTimePotionsToSell;
+        showMatchCardPotion -= showMatchCardsPotionsToSell;
+        showAllCardsPotion -= showAllCardsPotionsToSell;
+        coins += coinsEarned;
+
     }
 
     public static void ChangeMaxLevelCompleted(object value, int levelComplete)

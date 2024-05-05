@@ -11,14 +11,28 @@ public class VaultVisual : MonoBehaviour
     [SerializeField] private TextMeshProUGUI showMatchCardAmountText;
     [SerializeField] private TextMeshProUGUI showAllCardsAmountTexts;
 
+    private ShopUI shopUI;
+
+    private void Awake()
+    {
+        shopUI = GetComponentInParent<ShopUI>();
+    }
+
     private void Start()
     {
         PlayerStats.OnCoinsAmountChange += PlayerStats_OnCoinsAmountChange;
         PlayerStats.OnShowCardMatchAmountChange += PlayerStats_OnShowCardMatchAmountChange;
         PlayerStats.OnExtraTimeAmountChange += PlayerStats_OnExtraTimeAmountChange;
         PlayerStats.OnShowAllCardsAmontChange += PlayerStats_OnShowAllCardsAmontChange;
+        shopUI.OnDealButtonPressed += ShopUI_OnDealButtonPressed;
 
         UpdateVisual();
+    }
+
+    private void ShopUI_OnDealButtonPressed(object sender, System.EventArgs e)
+    {
+        UpdateVisual();
+
     }
 
     private void PlayerStats_OnShowAllCardsAmontChange(object sender, System.EventArgs e)
