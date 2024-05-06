@@ -33,15 +33,8 @@ public class SellPotionsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        Show();
-    }
-
-    private void Show()
-    {
-        gameObject.SetActive(true);
         UpdateVisual();
     }
-
     private void Hide()
     {
         gameObject.SetActive(false);

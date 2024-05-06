@@ -29,6 +29,11 @@ public class VaultVisual : MonoBehaviour
         UpdateVisual();
     }
 
+    private void OnEnable()
+    {
+        UpdateVisual();
+    }
+
     private void ShopUI_OnDealButtonPressed(object sender, System.EventArgs e)
     {
         UpdateVisual();

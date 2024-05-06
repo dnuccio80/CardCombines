@@ -13,15 +13,16 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Button dealButton;
     [SerializeField] private Button backSellMenuButton;
     [SerializeField] private Transform buyShop;
-    [SerializeField] private Transform sellShop;
+    [SerializeField] private Transform sellShopUI;
 
     private void Awake()
     {
         sellPotionsButton.onClick.AddListener(() =>
         {
             buyShop.gameObject.SetActive(false);
-            sellShop.gameObject.SetActive(true);
+            sellShopUI.gameObject.SetActive(true);
             dealButton.Select();
+            Debug.Log("Button sell clicked");
         });
 
         backBuyMenuButton.onClick.AddListener(() =>
@@ -38,7 +39,7 @@ public class ShopUI : MonoBehaviour
         backSellMenuButton.onClick.AddListener(() =>
         {
             buyShop.gameObject.SetActive(true);
-            sellShop.gameObject.SetActive(false);
+            sellShopUI.gameObject.SetActive(false);
             sellPotionsButton.Select();
         });
 
@@ -49,7 +50,7 @@ public class ShopUI : MonoBehaviour
     {
         LevelSelectionShopVisual.Instance.OnShopButtonPressed += LevelSelectionShopVisual_OnShopButtonPressed;
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
-        sellShop.gameObject.SetActive(false);
+        //sellShop.gameObject.SetActive(false);
         Hide();
     }
 
