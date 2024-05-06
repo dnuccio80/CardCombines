@@ -165,6 +165,12 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    public void IncrementPlayingTimer()
+    {
+        int incrementTimer = 5;
+        playingTimer += incrementTimer;
+    }
+
     public void ToggleGamePause()
     {
         if (gameState == GameState.GamePlaying) ChangeGameState(GameState.GamePaused);

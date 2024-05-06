@@ -90,6 +90,7 @@ public static class PlayerStats
         if (extraTimePotion == 0) return;
 
         extraTimePotion--;
+        GameManager.Instance.IncrementPlayingTimer();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
     }
