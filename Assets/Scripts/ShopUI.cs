@@ -22,7 +22,6 @@ public class ShopUI : MonoBehaviour
             buyShop.gameObject.SetActive(false);
             sellShopUI.gameObject.SetActive(true);
             dealButton.Select();
-            Debug.Log("Button sell clicked");
         });
 
         backBuyMenuButton.onClick.AddListener(() =>
@@ -50,7 +49,6 @@ public class ShopUI : MonoBehaviour
     {
         LevelSelectionShopVisual.Instance.OnShopButtonPressed += LevelSelectionShopVisual_OnShopButtonPressed;
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
-        //sellShop.gameObject.SetActive(false);
         Hide();
     }
 

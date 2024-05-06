@@ -197,5 +197,4 @@ public class GameManager : MonoBehaviour
         playingTimer = _timer;
         cardsToMatchAmount = cardsAmount;
     }
-    
 }

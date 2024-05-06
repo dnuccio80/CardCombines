@@ -13,8 +13,10 @@ public static class PlayerStats
     public static event EventHandler OnExtraTimeAmountChange;
     public static event EventHandler OnMaxLevelCompletedChange;
     public static event EventHandler OnWithoutEnoughCoins;
+    public static event EventHandler OnPotionUsed;
 
-    private static int coins = 75;
+
+    private static int coins = 500;
     private static int showAllCardsPotion;
     private static int showMatchCardPotion;
     private static int extraTimePotion;
@@ -80,6 +82,33 @@ public static class PlayerStats
         showMatchCardPotion -= showMatchCardsPotionsToSell;
         showAllCardsPotion -= showAllCardsPotionsToSell;
         coins += coinsEarned;
+
+    }
+
+    public static void TryUsePotion_ExtraTime(object value)
+    {
+        if (extraTimePotion == 0) return;
+
+        extraTimePotion--;
+        OnPotionUsed?.Invoke(value, EventArgs.Empty);
+
+    }
+
+    public static void TryUsePotion_ShowMatchCards(object value)
+    {
+        if (showMatchCardPotion == 0) return;
+
+        showMatchCardPotion--;
+        OnPotionUsed?.Invoke(value, EventArgs.Empty);
+
+    }
+
+    public static void TryUsePotion_ShowAllCards(object value)
+    {
+        if (showAllCardsPotion == 0) return;
+
+        showAllCardsPotion--;
+        OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
     }
 
