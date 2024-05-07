@@ -9,6 +9,22 @@ public class CardContainer : MonoBehaviour
 
     List<Vector3> cardPositions = new List<Vector3>();
 
+    List<Card> cardsDontMatchedList = new List<Card>(); 
+
+    private void Start()
+    {
+        GameManager.Instance.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
+        InitCardsDontMatchedList();
+    }
+
+    private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
+    {
+       if(gameObject.activeInHierarchy)
+        {
+            ShowMatchCardsOnce();
+        }
+    }
+
     private void OnEnable()
     {
         GetCardPositions();
@@ -46,6 +62,39 @@ public class CardContainer : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void InitCardsDontMatchedList()
+    {
+        foreach (Transform child in transform)
+        {
+            Card card = child.GetComponent<Card>();
+            cardsDontMatchedList.Add(card);
+        }
+    }
 
+    public void RemoveCardFromListNotMatched(Card card)
+    {
+        cardsDontMatchedList.Remove(card);
+    }
+
+    private void ShowMatchCardsOnce()
+    {
+        Card cardA = cardsDontMatchedList[UnityEngine.Random.Range(0,cardsDontMatchedList.Count)];
+
+        cardsDontMatchedList.Remove(cardA);
+
+        for(int i = 0; i < cardsDontMatchedList.Count; i++)
+        {
+            if (cardsDontMatchedList[i].GetCardName() == cardA.GetCardName())
+            {
+                cardsDontMatchedList.Add(cardA);
+                cardA.ShowMatchCards();
+                cardsDontMatchedList[i].ShowMatchCards();
+                break;
+
+            }
+        }
+
+
+    }
 
 }

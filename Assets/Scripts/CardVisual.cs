@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,13 @@ public class CardVisual : MonoBehaviour
 
         card.OnCardClicked += Card_OnCardClicked;
         card.OnIncorrectCardFlipped += Card_OnIncorrectCardFlipped;
+        card.OnShowMatchCards += Card_OnShowMatchCards;
         cardContainer.OnCardContainerHide += CardContainer_OnCardContainerHide;
+    }
+
+    private void Card_OnShowMatchCards(object sender, System.EventArgs e)
+    {
+        StartCoroutine(ShowMatchCards());
     }
 
     private void CardContainer_OnCardContainerHide(object sender, System.EventArgs e)
@@ -75,6 +82,14 @@ public class CardVisual : MonoBehaviour
     public bool IsCardFlippedToFront()
     {
         return currentSide == CardSide.front;
+    }
+
+    private IEnumerator ShowMatchCards()
+    {
+        float timerShowCards = .6f;
+        FlipToFront();
+        yield return new WaitForSeconds(timerShowCards);
+        FlipToBack();
     }
 
 }

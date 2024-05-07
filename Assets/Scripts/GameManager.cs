@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnCardsMatches;
     public event EventHandler OnCardDoesNotMatches;
     public event EventHandler<OnGameStateChangedEventArgs> OnGameStateChanged;
+    public event EventHandler OnShowMatchCardsButtonPressed;
 
     public class OnGameStateChangedEventArgs : EventArgs
     {
@@ -52,9 +53,11 @@ public class GameManager : MonoBehaviour
     {
         this.OnCardsMatches += GameManager_OnCardsMatches;
         this.OnGameStateChanged += GameManager_OnGameStateChanged;
+        this.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
 
     }
 
+    
     private void Update()
     {
         switch(gameState)
@@ -76,6 +79,11 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            OnShowMatchCardsButtonPressed?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void GameManager_OnGameStateChanged(object sender, OnGameStateChangedEventArgs e)
@@ -90,6 +98,15 @@ public class GameManager : MonoBehaviour
         cardB.CardHasBennMatched();
 
         DecreaseCardToMatchAmount();
+    }
+
+    private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
+    {
+        if (cardA != null)
+        {
+            cardA.CardDoesNotMatch();
+            CleanCards();
+        }
     }
 
     private void ChangeGameState(GameState _gameState)

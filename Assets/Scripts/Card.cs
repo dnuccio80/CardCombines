@@ -8,12 +8,19 @@ public class Card : MonoBehaviour
 
     public event EventHandler OnCardClicked;
     public event EventHandler OnIncorrectCardFlipped;
-
+    public event EventHandler OnShowMatchCards;
 
     [SerializeField] private CardVisual cardVisual;
     [SerializeField] private CardSO cardSO;
+    private CardContainer cardContainer;
+
 
     private bool cardMatched;
+
+    private void Start()
+    {
+        cardContainer = GetComponentInParent<CardContainer>();
+    }
 
     public void CardClicked()
     {
@@ -46,8 +53,13 @@ public class Card : MonoBehaviour
     public void CardHasBennMatched()
     {
         cardMatched = true;
+        cardContainer.RemoveCardFromListNotMatched(this);
     }
 
+    public void ShowMatchCards()
+    {
+        OnShowMatchCards?.Invoke(this, EventArgs.Empty);    
+    }
    
 
 
