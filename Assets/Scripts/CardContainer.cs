@@ -14,14 +14,23 @@ public class CardContainer : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
+        GameManager.Instance.OnShowAllCardsButtonPressed += GameManager_OnShowAllCardsButtonPressed;
         InitCardsDontMatchedList();
     }
+
 
     private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
     {
        if(gameObject.activeInHierarchy)
         {
             ShowMatchCardsOnce();
+        }
+    }
+    private void GameManager_OnShowAllCardsButtonPressed(object sender, EventArgs e)
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            ShowAllCards();
         }
     }
 
@@ -87,14 +96,19 @@ public class CardContainer : MonoBehaviour
             if (cardsDontMatchedList[i].GetCardName() == cardA.GetCardName())
             {
                 cardsDontMatchedList.Add(cardA);
-                cardA.ShowMatchCards();
-                cardsDontMatchedList[i].ShowMatchCards();
+                cardA.ShowCards();
+                cardsDontMatchedList[i].ShowCards();
                 break;
 
             }
         }
-
-
     }
 
+    private void ShowAllCards()
+    {
+        for(int i = 0;i < cardsDontMatchedList.Count; i++)
+        {
+            cardsDontMatchedList[i].ShowCards();
+        }
+    }
 }

@@ -33,7 +33,7 @@ public class CardVisual : MonoBehaviour
 
         card.OnCardClicked += Card_OnCardClicked;
         card.OnIncorrectCardFlipped += Card_OnIncorrectCardFlipped;
-        card.OnShowMatchCards += Card_OnShowMatchCards;
+        card.OnShowCards += Card_OnShowMatchCards;
         cardContainer.OnCardContainerHide += CardContainer_OnCardContainerHide;
     }
 
@@ -86,7 +86,7 @@ public class CardVisual : MonoBehaviour
 
     private IEnumerator ShowMatchCards()
     {
-        float timerShowCards = .6f;
+        float timerShowCards = 1f;
         FlipToFront();
         yield return new WaitForSeconds(timerShowCards);
         FlipToBack();

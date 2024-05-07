@@ -90,7 +90,7 @@ public static class PlayerStats
         if (extraTimePotion == 0) return;
 
         extraTimePotion--;
-        GameManager.Instance.IncrementPlayingTimer();
+        GameManager.Instance.UsePotion_ExtraTime();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
     }
@@ -100,6 +100,7 @@ public static class PlayerStats
         if (showMatchCardPotion == 0) return;
 
         showMatchCardPotion--;
+        GameManager.Instance.UsePotion_ShowMatchCards();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
     }
@@ -109,6 +110,7 @@ public static class PlayerStats
         if (showAllCardsPotion == 0) return;
 
         showAllCardsPotion--;
+        GameManager.Instance.UsePotion_ShowAllCards();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
     }

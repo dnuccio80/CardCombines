@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
 
     public event EventHandler OnCardClicked;
     public event EventHandler OnIncorrectCardFlipped;
-    public event EventHandler OnShowMatchCards;
+    public event EventHandler OnShowCards;
 
     [SerializeField] private CardVisual cardVisual;
     [SerializeField] private CardSO cardSO;
@@ -56,11 +56,9 @@ public class Card : MonoBehaviour
         cardContainer.RemoveCardFromListNotMatched(this);
     }
 
-    public void ShowMatchCards()
+    public void ShowCards()
     {
-        OnShowMatchCards?.Invoke(this, EventArgs.Empty);    
+        OnShowCards?.Invoke(this, EventArgs.Empty);    
     }
    
-
-
 }

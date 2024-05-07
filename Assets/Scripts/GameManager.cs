@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnCardDoesNotMatches;
     public event EventHandler<OnGameStateChangedEventArgs> OnGameStateChanged;
     public event EventHandler OnShowMatchCardsButtonPressed;
+    public event EventHandler OnShowAllCardsButtonPressed;
 
     public class OnGameStateChangedEventArgs : EventArgs
     {
@@ -54,10 +55,9 @@ public class GameManager : MonoBehaviour
         this.OnCardsMatches += GameManager_OnCardsMatches;
         this.OnGameStateChanged += GameManager_OnGameStateChanged;
         this.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
-
+        this.OnShowAllCardsButtonPressed += GameManager_OnShowAllCardsButtonPressed;
     }
 
-    
     private void Update()
     {
         switch(gameState)
@@ -79,11 +79,6 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            OnShowMatchCardsButtonPressed?.Invoke(this, EventArgs.Empty);
-        }
     }
 
     private void GameManager_OnGameStateChanged(object sender, OnGameStateChangedEventArgs e)
@@ -101,6 +96,15 @@ public class GameManager : MonoBehaviour
     }
 
     private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
+    {
+        if (cardA != null)
+        {
+            cardA.CardDoesNotMatch();
+            CleanCards();
+        }
+    }
+
+    private void GameManager_OnShowAllCardsButtonPressed(object sender, EventArgs e)
     {
         if (cardA != null)
         {
@@ -182,12 +186,6 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    public void IncrementPlayingTimer()
-    {
-        int incrementTimer = 5;
-        playingTimer += incrementTimer;
-    }
-
     public void ToggleGamePause()
     {
         if (gameState == GameState.GamePlaying) ChangeGameState(GameState.GamePaused);
@@ -220,4 +218,21 @@ public class GameManager : MonoBehaviour
         playingTimer = _timer;
         cardsToMatchAmount = cardsAmount;
     }
+
+    public void UsePotion_ExtraTime()
+    {
+        int incrementTimer = 5;
+        playingTimer += incrementTimer;
+    }
+    public void UsePotion_ShowMatchCards()
+    {
+        OnShowMatchCardsButtonPressed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void UsePotion_ShowAllCards()
+    {
+        OnShowAllCardsButtonPressed?.Invoke(this, EventArgs.Empty);
+
+    }
+
 }
