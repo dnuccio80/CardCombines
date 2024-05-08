@@ -10,6 +10,7 @@ public class LevelContainer : MonoBehaviour
 
     [SerializeField] private int levelNumber;
     [SerializeField] private float playingTimer;
+    [SerializeField] private int coinsEarned; 
     
     private int cardsAmount;
     private CardContainer cardContainer;
@@ -31,7 +32,7 @@ public class LevelContainer : MonoBehaviour
     {
         gameObject.SetActive(true);
         OnLevelPlaying?.Invoke(this, EventArgs.Empty);
-        GameManager.Instance.SetPlayingConfig(playingTimer, cardsAmount);
+        GameManager.Instance.SetPlayingConfig(playingTimer, cardsAmount, coinsEarned);
     }
 
     private void Hide()

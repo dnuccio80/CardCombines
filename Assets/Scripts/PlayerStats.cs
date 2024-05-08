@@ -16,16 +16,16 @@ public static class PlayerStats
     public static event EventHandler OnPotionUsed;
 
 
-    private static int coins = 500;
+    private static int coins;
     private static int showAllCardsPotion;
     private static int showMatchCardPotion;
     private static int extraTimePotion;
     private static int maxLevelCompleted;
     private static int levelToPlay;
 
-    public static void IncrementCoinsAmount(object value)
+    public static void IncrementCoinsAmount(object value, int _coinsEarned)
     {
-        coins++;
+        coins += _coinsEarned;
         OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
     }
 

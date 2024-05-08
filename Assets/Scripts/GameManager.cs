@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
     // GamePlaying System
     private float playingTimer;
 
+
+    // In case to Win
+    private int coinsEarned;
+
     private void Awake()
     {
         Instance = this;
@@ -182,6 +186,7 @@ public class GameManager : MonoBehaviour
         if (cardsToMatchAmount == 0)
         {
             ChangeGameState(GameState.GameWin);
+            PlayerStats.IncrementCoinsAmount(this, coinsEarned);
             PlayerStats.ChangeMaxLevelCompleted(this,levelNumber);
         } 
     }
@@ -198,25 +203,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.CountdownToStart);
     }
 
-    public int GetLevelNumber()
-    {
-        return levelNumber;
-    }
-
-    public float GetCountdownTimer()
-    {
-        return countdownTimer;
-    }
-
-    public float GetPlayingTimer()
-    {
-        return playingTimer;
-    }
-
-    public void SetPlayingConfig(float _timer, int cardsAmount)
+    public void SetPlayingConfig(float _timer, int cardsAmount, int coinsToEarn)
     {
         playingTimer = _timer;
         cardsToMatchAmount = cardsAmount;
+        coinsEarned = coinsToEarn;
     }
 
     public void UsePotion_ExtraTime()
@@ -234,5 +225,28 @@ public class GameManager : MonoBehaviour
         OnShowAllCardsButtonPressed?.Invoke(this, EventArgs.Empty);
 
     }
+
+    public int GetLevelNumber()
+    {
+        return levelNumber;
+    }
+
+    public float GetCountdownTimer()
+    {
+        return countdownTimer;
+    }
+
+    public float GetPlayingTimer()
+    {
+        return playingTimer;
+    }
+
+    public int GetCoinsEarned()
+    {
+        return coinsEarned; 
+    }
+
+    
+
 
 }
