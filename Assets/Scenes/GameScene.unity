@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 16000855}
   - component: {fileID: 16000856}
   m_Layer: 0
-  m_Name: CardContainer_5x4 (1)
+  m_Name: CardContainer_5x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2487,7 +2487,7 @@ GameObject:
   - component: {fileID: 109344828}
   - component: {fileID: 109344829}
   m_Layer: 0
-  m_Name: CardContainer_6x4 (1)
+  m_Name: CardContainer_6x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25503,7 +25503,7 @@ GameObject:
   - component: {fileID: 1097764113}
   - component: {fileID: 1097764114}
   m_Layer: 0
-  m_Name: CardContainer_6x4 (1)
+  m_Name: CardContainer_6x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30574,7 +30574,7 @@ GameObject:
   - component: {fileID: 1334040115}
   - component: {fileID: 1334040116}
   m_Layer: 0
-  m_Name: CardContainer_4x3 (1)
+  m_Name: CardContainer_4x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33833,7 +33833,7 @@ GameObject:
   - component: {fileID: 1501846248}
   - component: {fileID: 1501846249}
   m_Layer: 0
-  m_Name: CardContainer_4x3 (1)
+  m_Name: CardContainer_4x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37697,7 +37697,7 @@ GameObject:
   - component: {fileID: 1691036331}
   - component: {fileID: 1691036332}
   m_Layer: 0
-  m_Name: CardContainer_4x3 (1)
+  m_Name: CardContainer_4x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38728,7 +38728,7 @@ GameObject:
   - component: {fileID: 1752735436}
   - component: {fileID: 1752735437}
   m_Layer: 0
-  m_Name: CardContainer_6x4 (1)
+  m_Name: CardContainer_6x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

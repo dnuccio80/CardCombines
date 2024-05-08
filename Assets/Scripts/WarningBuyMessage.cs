@@ -58,5 +58,11 @@ public class WarningBuyMessage : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        PlayerStats.OnWithoutEnoughCoins -= PlayerStats_OnWithoutEnoughCoins;
+
+    }
+
 
 }
