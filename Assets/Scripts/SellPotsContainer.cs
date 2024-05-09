@@ -58,7 +58,8 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 extraTime_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-            }
+                PlayWooshSound();
+            } 
         });
 
         extraTime_additionButton.onClick.AddListener(() =>
@@ -70,8 +71,8 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 extraTime_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
+                PlayWooshSound();
             }
-            
         });
 
         showMatchCards_subtractButton.onClick.AddListener(() =>
@@ -83,6 +84,8 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 showMatchCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
+                PlayWooshSound();
+
             }
         });
 
@@ -95,6 +98,8 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 showMatchCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
+                PlayWooshSound();
+
             }
         });
 
@@ -107,6 +112,8 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 showAllCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
+                PlayWooshSound();
+
             }
         });
 
@@ -119,7 +126,9 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 showAllCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-            }
+                PlayWooshSound();
+
+            } 
         });
 
     }
@@ -170,4 +179,10 @@ public class SellPotsContainer : MonoBehaviour
 
         UpdateCoinsVisual();
     }
+
+    private void PlayWooshSound()
+    {
+        SoundManager.Instance.EmitWooshSound();
+    }
+
 }

@@ -19,6 +19,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip flipCardSound;
     [SerializeField] private AudioClip selectButtonSound;
     [SerializeField] private AudioClip coinEarned;
+    [SerializeField] private AudioClip potionBought;
+    [SerializeField] private AudioClip clockFasterSound;
+    [SerializeField] private AudioClip cashRegisterSound;
+    [SerializeField] private AudioClip errorSound;
+    [SerializeField] private AudioClip wooshSound;
+    [SerializeField] private AudioClip deniedSound;
 
     private AudioSource audioSource;
     private float volume;
@@ -81,6 +87,36 @@ public class SoundManager : MonoBehaviour
     public void EmitCoinEarnedSound()
     {
         audioSource.PlayOneShot(coinEarned);
+    }
+
+    public void EmitPotionBoughtSound()
+    {
+        audioSource.PlayOneShot(potionBought);
+    }
+
+    public void EmitClockFasterSound()
+    {
+        audioSource.PlayOneShot(clockFasterSound);
+    }
+
+    public void EmitCashRegisterSound()
+    {
+        audioSource.PlayOneShot(cashRegisterSound);
+    }
+
+    public void EmitErrorSound()
+    {
+        audioSource.PlayOneShot(errorSound);
+    }
+
+    public void EmitWooshSound()
+    {
+        audioSource.PlayOneShot(wooshSound);
+    }
+
+    public void EmitDeniedSound()
+    {
+        audioSource.PlayOneShot(deniedSound);
     }
 
     public void IncrementSoundVolume()

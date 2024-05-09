@@ -37,6 +37,7 @@ public static class PlayerStats
             coins -= cost;
             OnExtraTimeAmountChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
+            SoundManager.Instance.EmitPotionBoughtSound();
         }
         else
         {
@@ -53,6 +54,8 @@ public static class PlayerStats
             coins -= cost;
             OnShowCardMatchAmountChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
+            SoundManager.Instance.EmitPotionBoughtSound();
+
         }
         else
         {
@@ -69,6 +72,8 @@ public static class PlayerStats
             coins -= cost;
             OnShowAllCardsAmontChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
+            SoundManager.Instance.EmitPotionBoughtSound();
+
         }
         else
         {
@@ -82,7 +87,7 @@ public static class PlayerStats
         showMatchCardPotion -= showMatchCardsPotionsToSell;
         showAllCardsPotion -= showAllCardsPotionsToSell;
         coins += coinsEarned;
-
+        if (coinsEarned > 0) SoundManager.Instance.EmitCashRegisterSound();
     }
 
     public static void TryUsePotion_ExtraTime(object value)
@@ -91,8 +96,8 @@ public static class PlayerStats
 
         extraTimePotion--;
         GameManager.Instance.UsePotion_ExtraTime();
+        SoundManager.Instance.EmitClockFasterSound();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
-
     }
 
     public static void TryUsePotion_ShowMatchCards(object value)

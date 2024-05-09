@@ -50,6 +50,7 @@ public class WarningBuyMessage : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        SoundManager.Instance.EmitErrorSound();
         animator.SetTrigger(POPUP_ANIMATION);
     }
 
