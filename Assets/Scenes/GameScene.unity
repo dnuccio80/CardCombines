@@ -73180,6 +73180,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb0de1a03ef642449a76a7c99ba7037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicLevels:
+  - {fileID: 8300000, guid: a107d35207c771e459a7329ee869aee6, type: 3}
+  - {fileID: 8300000, guid: 202156bea9f8fac4ea9255826eba6187, type: 3}
+  - {fileID: 8300000, guid: 54465a0c052016b4e967cdc0479c4f7e, type: 3}
+  - {fileID: 8300000, guid: f30dc5a114746d54086a852cba4743b9, type: 3}
+  - {fileID: 8300000, guid: 0b4701bb3da75d640a88eab67e455143, type: 3}
+  - {fileID: 8300000, guid: 242692bb13e45fb41aa36685506de5f9, type: 3}
+  - {fileID: 8300000, guid: 4c8d8db9a1f0fb3419e4da2e7291910c, type: 3}
+  selectionLevelShopMusic: {fileID: 8300000, guid: 5d7946526f30ebc4db0c9776a850dfc1, type: 3}
+  pauseMenuMusic: {fileID: 8300000, guid: 47b7da5420632944999cce0cee092c0b, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 24bce6a451bab314b8f481b151c81ef4, type: 3}
+  gameWinMusic: {fileID: 8300000, guid: ae61aa01bf0bf8c45bf4d461d109a355, type: 3}
 --- !u!82 &2021700405
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73190,7 +73202,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5d7946526f30ebc4db0c9776a850dfc1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

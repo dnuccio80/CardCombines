@@ -10,9 +10,14 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnCardsMatches;
     public event EventHandler OnCardDoesNotMatches;
     public event EventHandler<OnGameStateChangedEventArgs> OnGameStateChanged;
+    public event EventHandler<OnToggleGamePauseEventArgs> OnToggleGamePause;
     public event EventHandler OnShowMatchCardsButtonPressed;
     public event EventHandler OnShowAllCardsButtonPressed;
 
+    public class OnToggleGamePauseEventArgs : EventArgs
+    {
+        public GameState gameState;
+    }
     public class OnGameStateChangedEventArgs : EventArgs
     {
         public GameState gameState;
@@ -195,6 +200,11 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == GameState.GamePlaying) ChangeGameState(GameState.GamePaused);
         else if (gameState == GameState.GamePaused) ChangeGameState(GameState.GamePlaying);
+
+        OnToggleGamePause?.Invoke(this, new OnToggleGamePauseEventArgs
+        {
+            gameState = gameState
+        });
     }
 
     public void StartGame(int _levelNumber)
