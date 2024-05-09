@@ -58,8 +58,11 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 extraTime_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
-            } 
+                PlayCorrectSound();
+            } else
+            {
+                PlayIncorrectSound();
+            }
         });
 
         extraTime_additionButton.onClick.AddListener(() =>
@@ -71,7 +74,11 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 extraTime_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
+                PlayCorrectSound();
+            } else
+            {
+                PlayIncorrectSound();
+
             }
         });
 
@@ -84,7 +91,11 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 showMatchCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
+                PlayCorrectSound();
+
+            } else
+            {
+                PlayIncorrectSound();
 
             }
         });
@@ -98,7 +109,11 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 showMatchCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
+                PlayCorrectSound();
+
+            } else
+            {
+                PlayIncorrectSound();
 
             }
         });
@@ -112,7 +127,11 @@ public class SellPotsContainer : MonoBehaviour
                 amount--;
                 showAllCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
+                PlayCorrectSound();
+
+            } else
+            {
+                PlayIncorrectSound();
 
             }
         });
@@ -126,9 +145,13 @@ public class SellPotsContainer : MonoBehaviour
                 amount++;
                 showAllCards_amountText.text = amount.ToString();
                 UpdateCoinsVisual();
-                PlayWooshSound();
+                PlayCorrectSound();
 
-            } 
+            } else
+            {
+                PlayIncorrectSound();
+
+            }
         });
 
     }
@@ -180,9 +203,14 @@ public class SellPotsContainer : MonoBehaviour
         UpdateCoinsVisual();
     }
 
-    private void PlayWooshSound()
+    private void PlayCorrectSound()
     {
-        SoundManager.Instance.EmitWooshSound();
+        SoundManager.Instance.EmitTickSound();
+    }
+
+    private void PlayIncorrectSound()
+    {
+        SoundManager.Instance.EmitTuckSound();
     }
 
 }

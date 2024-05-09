@@ -25,6 +25,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip errorSound;
     [SerializeField] private AudioClip wooshSound;
     [SerializeField] private AudioClip deniedSound;
+    [SerializeField] private AudioClip tickSound;
+    [SerializeField] private AudioClip tuckSound;
 
     private AudioSource audioSource;
     private float volume;
@@ -117,6 +119,16 @@ public class SoundManager : MonoBehaviour
     public void EmitDeniedSound()
     {
         audioSource.PlayOneShot(deniedSound);
+    }
+
+    public void EmitTickSound()
+    {
+        audioSource.PlayOneShot(tickSound);
+    }
+
+    public void EmitTuckSound()
+    {
+        audioSource.PlayOneShot(tuckSound);
     }
 
     public void IncrementSoundVolume()
