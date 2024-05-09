@@ -13,14 +13,12 @@ public class SoundManager : MonoBehaviour
 
     public event EventHandler OnSoundVolumeChanged;
 
-    [SerializeField] private AudioClip winGameSound;
-    [SerializeField] private AudioClip loseGameSound;
     [SerializeField] private AudioClip matchSuccessSound;
     [SerializeField] private AudioClip matchMissesSound;
     [SerializeField] private AudioClip countdownSound;
     [SerializeField] private AudioClip flipCardSound;
     [SerializeField] private AudioClip selectButtonSound;
-
+    [SerializeField] private AudioClip coinEarned;
 
     private AudioSource audioSource;
     private float volume;
@@ -65,16 +63,6 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(matchMissesSound);
     }
 
-    public void EmitWinGameSound()
-    {
-        audioSource.PlayOneShot(winGameSound);
-    }
-    public void EmitLoseGameSound()
-    {
-        audioSource.PlayOneShot(loseGameSound);
-
-    }
-
     public void EmitCountdownSound()
     {
         audioSource.PlayOneShot(countdownSound);
@@ -88,6 +76,11 @@ public class SoundManager : MonoBehaviour
     public void EmitSelectButtonSound()
     {
         audioSource.PlayOneShot(selectButtonSound);
+    }
+
+    public void EmitCoinEarnedSound()
+    {
+        audioSource.PlayOneShot(coinEarned);
     }
 
     public void IncrementSoundVolume()
