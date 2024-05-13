@@ -11,13 +11,25 @@ public class CardContainer : MonoBehaviour
 
     List<Card> cardsDontMatchedList = new List<Card>(); 
 
+    private LevelContainer levelContainer;
+
+    private void Awake()
+    {
+        levelContainer = GetComponentInParent<LevelContainer>();
+    }
+
     private void Start()
     {
         GameManager.Instance.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
         GameManager.Instance.OnShowAllCardsButtonPressed += GameManager_OnShowAllCardsButtonPressed;
+        levelContainer.OnLevelPlaying += LevelContainer_OnLevelPlaying;
         InitCardsDontMatchedList();
     }
 
+    private void LevelContainer_OnLevelPlaying(object sender, EventArgs e)
+    {
+        GetCardPositions();
+    }
 
     private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
     {
@@ -32,11 +44,6 @@ public class CardContainer : MonoBehaviour
         {
             ShowAllCards();
         }
-    }
-
-    private void OnEnable()
-    {
-        GetCardPositions();
     }
 
     private void GetCardPositions()

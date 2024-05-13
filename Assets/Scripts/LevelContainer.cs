@@ -25,7 +25,10 @@ public class LevelContainer : MonoBehaviour
 
     private void GamaManager_OnGameStateChanged(object sender, GameManager.OnGameStateChangedEventArgs e)
     {
-        (e.gameState != GameManager.GameState.LevelSelection && GameManager.Instance.GetLevelNumber() == levelNumber ? (Action) Show : Hide)();
+
+        if (e.gameState == GameManager.GameState.LevelSelection) Hide();
+
+        if (e.gameState == GameManager.GameState.CountdownToStart && GameManager.Instance.GetLevelNumber() == levelNumber) Show();
     }
 
     private void Show()
