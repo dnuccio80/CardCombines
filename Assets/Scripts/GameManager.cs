@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         gameState = GameState.LevelSelection;
-
     }
 
     private void Start()

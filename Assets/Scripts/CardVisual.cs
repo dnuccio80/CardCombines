@@ -34,17 +34,11 @@ public class CardVisual : MonoBehaviour
         card.OnCardClicked += Card_OnCardClicked;
         card.OnIncorrectCardFlipped += Card_OnIncorrectCardFlipped;
         card.OnShowCards += Card_OnShowMatchCards;
-        cardContainer.OnCardContainerHide += CardContainer_OnCardContainerHide;
     }
 
     private void Card_OnShowMatchCards(object sender, System.EventArgs e)
     {
         StartCoroutine(ShowMatchCards());
-    }
-
-    private void CardContainer_OnCardContainerHide(object sender, System.EventArgs e)
-    {
-        FlipToBack();
     }
 
     private void Card_OnIncorrectCardFlipped(object sender, System.EventArgs e)

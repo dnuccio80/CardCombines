@@ -17,9 +17,10 @@ public class Card : MonoBehaviour
 
     private bool cardMatched;
 
-    private void Start()
+    private void Awake()
     {
         cardContainer = GetComponentInParent<CardContainer>();
+
     }
 
     public void CardClicked()

@@ -20,7 +20,7 @@ public static class PlayerStats
     private static int showAllCardsPotion;
     private static int showMatchCardPotion;
     private static int extraTimePotion;
-    private static int maxLevelCompleted;
+    private static int maxLevelCompleted = 29;
     private static int levelToPlay;
 
     public static void IncrementCoinsAmount(object value, int _coinsEarned)

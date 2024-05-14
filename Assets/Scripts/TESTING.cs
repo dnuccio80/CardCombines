@@ -1,11 +1,11 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using System;
-public class CardContainer : MonoBehaviour
-{
 
+public class TESTING : MonoBehaviour
+{
     List<Vector3> cardPositions;
     List<Card> cardsDontMatchedList;
 
@@ -20,21 +20,16 @@ public class CardContainer : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("TESTING ARRANCA");
         GameManager.Instance.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
         GameManager.Instance.OnShowAllCardsButtonPressed += GameManager_OnShowAllCardsButtonPressed;
         levelContainer.OnLevelStart += LevelContainer_OnLevelStart;
         InitCardsDontMatchedList();
     }
 
-    private void LevelContainer_OnLevelStart(object sender, EventArgs e)
-    {
-        GetCardPositions();
-
-    }
-
     private void GameManager_OnShowMatchCardsButtonPressed(object sender, EventArgs e)
     {
-       if(gameObject.activeInHierarchy)
+        if (gameObject.activeInHierarchy)
         {
             ShowMatchCardsOnce();
         }
@@ -47,29 +42,9 @@ public class CardContainer : MonoBehaviour
         }
     }
 
-    private void GetCardPositions()
+    private void LevelContainer_OnLevelStart(object sender, EventArgs e)
     {
-        foreach(Transform child in transform)
-        {
-            cardPositions.Add(child.localPosition);
-            child.localPosition = new Vector3(-10f,0f,0f);
-            child.localScale = Vector3.one * 1.3f;
-        }
-
-        MixCards();
-    }
-
-    private void MixCards()
-    {
-        foreach (Transform child in transform)
-        {
-            int cardIndex = UnityEngine.Random.Range(0, cardPositions.Count);
-            
-            child.DOLocalMove(cardPositions[cardIndex], 1f);
-            child.DOScale(Vector3.one, 1f);
-            cardPositions.RemoveAt(cardIndex);
-        }
-
+        GetCardPositions();
     }
 
     private void InitCardsDontMatchedList()
@@ -81,6 +56,31 @@ public class CardContainer : MonoBehaviour
         }
     }
 
+    private void GetCardPositions()
+    {
+        foreach (Transform child in transform)
+        {
+            cardPositions.Add(child.localPosition);
+            child.localPosition = new Vector3(-10f, 0f, 0f);
+            child.localScale = Vector3.one * 1.3f;
+        }
+
+        MixCards();
+    }
+
+    private void MixCards()
+    {
+        foreach (Transform child in transform)
+        {
+            int cardIndex = UnityEngine.Random.Range(0, cardPositions.Count);
+
+            child.DOLocalMove(cardPositions[cardIndex], 1f);
+            child.DOScale(Vector3.one, 1f);
+            cardPositions.RemoveAt(cardIndex);
+        }
+
+    }
+
     public void RemoveCardFromListNotMatched(Card card)
     {
         cardsDontMatchedList.Remove(card);
@@ -88,11 +88,11 @@ public class CardContainer : MonoBehaviour
 
     private void ShowMatchCardsOnce()
     {
-        Card cardA = cardsDontMatchedList[UnityEngine.Random.Range(0,cardsDontMatchedList.Count)];
+        Card cardA = cardsDontMatchedList[UnityEngine.Random.Range(0, cardsDontMatchedList.Count)];
 
         cardsDontMatchedList.Remove(cardA);
 
-        for(int i = 0; i < cardsDontMatchedList.Count; i++)
+        for (int i = 0; i < cardsDontMatchedList.Count; i++)
         {
             if (cardsDontMatchedList[i].GetCardName() == cardA.GetCardName())
             {
@@ -107,9 +107,10 @@ public class CardContainer : MonoBehaviour
 
     private void ShowAllCards()
     {
-        for(int i = 0;i < cardsDontMatchedList.Count; i++)
+        for (int i = 0; i < cardsDontMatchedList.Count; i++)
         {
             cardsDontMatchedList[i].ShowCards();
         }
     }
+
 }
