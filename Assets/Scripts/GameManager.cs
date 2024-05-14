@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         this.OnGameStateChanged += GameManager_OnGameStateChanged;
         this.OnShowMatchCardsButtonPressed += GameManager_OnShowMatchCardsButtonPressed;
         this.OnShowAllCardsButtonPressed += GameManager_OnShowAllCardsButtonPressed;
+        PlayerStats.LoadData();
     }
 
     private void Update()

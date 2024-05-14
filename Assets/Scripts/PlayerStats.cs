@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 public static class PlayerStats
 {
@@ -15,6 +11,11 @@ public static class PlayerStats
     public static event EventHandler OnWithoutEnoughCoins;
     public static event EventHandler OnPotionUsed;
 
+    private const string PLAYERPREFS_COINS = "Coins";
+    private const string PLAYERPREFS_EXTRATIME_POTIONS_AMOUNT = "ExtraTimePotionsAmount";
+    private const string PLAYERPREFS_SHOWMATCHCARDS_POTIONS_AMOUNT = "ShowMatchCardsPotionsAmount";
+    private const string PLAYERPREFS_SHOWALLCARDS_POTIONS_AMOUNT = "ShowAllCardsPotionsAmount";
+    private const string PLAYERPREFS_LEVEL_REACHED = "LevelReached";
 
     private static int coins;
     private static int showAllCardsPotion;
@@ -26,6 +27,7 @@ public static class PlayerStats
     public static void IncrementCoinsAmount(object value, int _coinsEarned)
     {
         coins += _coinsEarned;
+        SaveData();
         OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
     }
 
@@ -35,6 +37,7 @@ public static class PlayerStats
         {
             extraTimePotion++;
             coins -= cost;
+            SaveData();
             OnExtraTimeAmountChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
             SoundManager.Instance.EmitPotionBoughtSound();
@@ -52,6 +55,7 @@ public static class PlayerStats
         {
             showMatchCardPotion++;
             coins -= cost;
+            SaveData();
             OnShowCardMatchAmountChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
             SoundManager.Instance.EmitPotionBoughtSound();
@@ -70,6 +74,7 @@ public static class PlayerStats
         {
             showAllCardsPotion++;
             coins -= cost;
+            SaveData();
             OnShowAllCardsAmontChange?.Invoke(value, EventArgs.Empty);
             OnCoinsAmountChange?.Invoke(value, EventArgs.Empty);
             SoundManager.Instance.EmitPotionBoughtSound();
@@ -87,7 +92,13 @@ public static class PlayerStats
         showMatchCardPotion -= showMatchCardsPotionsToSell;
         showAllCardsPotion -= showAllCardsPotionsToSell;
         coins += coinsEarned;
-        if (coinsEarned > 0) SoundManager.Instance.EmitCashRegisterSound();
+
+        if (coinsEarned > 0)
+        {
+            SoundManager.Instance.EmitCashRegisterSound();
+            SaveData();
+        }
+
     }
 
     public static void TryUsePotion_ExtraTime(object value)
@@ -95,6 +106,8 @@ public static class PlayerStats
         if (extraTimePotion == 0) return;
 
         extraTimePotion--;
+
+        SaveData();
         GameManager.Instance.UsePotion_ExtraTime();
         SoundManager.Instance.EmitClockFasterSound();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
@@ -103,8 +116,8 @@ public static class PlayerStats
     public static void TryUsePotion_ShowMatchCards(object value)
     {
         if (showMatchCardPotion == 0) return;
-
         showMatchCardPotion--;
+        SaveData();
         GameManager.Instance.UsePotion_ShowMatchCards();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
@@ -115,6 +128,7 @@ public static class PlayerStats
         if (showAllCardsPotion == 0) return;
 
         showAllCardsPotion--;
+        SaveData();
         GameManager.Instance.UsePotion_ShowAllCards();
         OnPotionUsed?.Invoke(value, EventArgs.Empty);
 
@@ -125,6 +139,7 @@ public static class PlayerStats
         if (maxLevelCompleted > levelComplete) return;
 
         maxLevelCompleted = levelComplete;
+        SaveData();
         OnMaxLevelCompletedChange?.Invoke(value, EventArgs.Empty);
     }
 
@@ -161,6 +176,24 @@ public static class PlayerStats
     public static int GetLevelToPlay()
     {
         return levelToPlay;
+    }
+
+    public static void LoadData()
+    {
+        coins = PlayerPrefs.GetInt(PLAYERPREFS_COINS, 0);
+        extraTimePotion = PlayerPrefs.GetInt(PLAYERPREFS_EXTRATIME_POTIONS_AMOUNT,0);
+        showMatchCardPotion = PlayerPrefs.GetInt(PLAYERPREFS_SHOWMATCHCARDS_POTIONS_AMOUNT, 0);
+        showAllCardsPotion = PlayerPrefs.GetInt(PLAYERPREFS_SHOWALLCARDS_POTIONS_AMOUNT, 0);
+        maxLevelCompleted = PlayerPrefs.GetInt(PLAYERPREFS_LEVEL_REACHED);
+    }
+
+    private static void SaveData()
+    {
+        PlayerPrefs.SetInt(PLAYERPREFS_COINS, coins);
+        PlayerPrefs.SetInt(PLAYERPREFS_EXTRATIME_POTIONS_AMOUNT, extraTimePotion);
+        PlayerPrefs.SetInt(PLAYERPREFS_SHOWMATCHCARDS_POTIONS_AMOUNT, showMatchCardPotion);
+        PlayerPrefs.SetInt(PLAYERPREFS_SHOWALLCARDS_POTIONS_AMOUNT, showAllCardsPotion);
+        PlayerPrefs.SetInt(PLAYERPREFS_LEVEL_REACHED, maxLevelCompleted);
     }
 
 
