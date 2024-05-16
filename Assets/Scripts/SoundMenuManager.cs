@@ -5,7 +5,8 @@ using UnityEngine;
 public class SoundMenuManager : MonoBehaviour
 {
     [SerializeField] private AudioClip selectButtonSound;
-    
+    [SerializeField] private AudioClip wooshSound;
+
     private AudioSource audioSource;
     private void Awake()
     {
@@ -26,5 +27,10 @@ public class SoundMenuManager : MonoBehaviour
     public void PlaySelectButtonSound()
     {
         audioSource.PlayOneShot(selectButtonSound);
+    }
+
+    public void PlayWooshSound()
+    {
+        audioSource.PlayOneShot(wooshSound);
     }
 }
