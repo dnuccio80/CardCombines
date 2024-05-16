@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 271215256}
   - component: {fileID: 271215255}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo2_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1852,7 @@ GameObject:
   - component: {fileID: 371405588}
   - component: {fileID: 371405587}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo1_CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 400519194}
   - component: {fileID: 400519196}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo1_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2693,7 +2693,7 @@ GameObject:
   - component: {fileID: 591017870}
   - component: {fileID: 591017869}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo4_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3261,7 +3261,7 @@ GameObject:
   - component: {fileID: 622698634}
   - component: {fileID: 622698633}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo3_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3460,7 +3460,7 @@ GameObject:
   - component: {fileID: 653403886}
   - component: {fileID: 653403888}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo7_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3750,7 +3750,7 @@ GameObject:
   - component: {fileID: 677354726}
   - component: {fileID: 677354725}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo5_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4040,7 +4040,7 @@ GameObject:
   - component: {fileID: 693579622}
   - component: {fileID: 693579621}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo8_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4509,7 +4509,7 @@ GameObject:
   - component: {fileID: 787482278}
   - component: {fileID: 787482277}
   m_Layer: 5
-  m_Name: DoneButton
+  m_Name: Demo8_DoneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4842,7 +4842,7 @@ GameObject:
   - component: {fileID: 898176414}
   - component: {fileID: 898176413}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo6_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6479,7 +6479,7 @@ GameObject:
   - component: {fileID: 1148350060}
   - component: {fileID: 1148350062}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo5_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7691,9 +7691,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b480fd242e3dea41be8f50bc1899a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demoTransformArray: []
-  nextButtonArray: []
-  backButtonArray: []
+  demo1_transform: {fileID: 6973217}
+  demo2_transform: {fileID: 485313041}
+  demo3_transform: {fileID: 132907989}
+  demo4_transform: {fileID: 1078016196}
+  demo5_transform: {fileID: 1877736269}
+  demo6_transform: {fileID: 2128728693}
+  demo7_transform: {fileID: 2027443769}
+  demo8_transform: {fileID: 191822917}
+  demoTransformArray:
+  - {fileID: 6973217}
+  - {fileID: 485313041}
+  - {fileID: 132907989}
+  - {fileID: 1078016196}
+  - {fileID: 1877736269}
+  - {fileID: 2128728693}
+  - {fileID: 2027443769}
+  - {fileID: 191822917}
+  demo1_NextButton: {fileID: 400519194}
+  demo2_NextButton: {fileID: 1582127997}
+  demo3_NextButton: {fileID: 2026973981}
+  demo4_NextButton: {fileID: 1482735159}
+  demo5_NextButton: {fileID: 1148350060}
+  demo6_NextButton: {fileID: 1379562983}
+  demo7_NextButton: {fileID: 653403886}
+  demo8_NextButton: {fileID: 787482278}
+  demo1_BackButton: {fileID: 371405588}
+  demo2_BackButton: {fileID: 271215256}
+  demo3_BackButton: {fileID: 622698634}
+  demo4_BackButton: {fileID: 591017870}
+  demo5_BackButton: {fileID: 677354726}
+  demo6_BackButton: {fileID: 898176414}
+  demo7_BackButton: {fileID: 1768990444}
+  demo8_BackButton: {fileID: 693579622}
 --- !u!1 &1338347250
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,7 +8007,7 @@ GameObject:
   - component: {fileID: 1379562983}
   - component: {fileID: 1379562985}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo6_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8579,7 +8609,7 @@ GameObject:
   - component: {fileID: 1482735159}
   - component: {fileID: 1482735161}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo4_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9052,7 +9082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -9143,7 +9173,7 @@ GameObject:
   - component: {fileID: 1582127997}
   - component: {fileID: 1582127999}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo2_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10010,7 +10040,7 @@ GameObject:
   - component: {fileID: 1768990444}
   - component: {fileID: 1768990443}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: Demo7_BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10827,9 +10857,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6868d74b5974db744b372749cf94353e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 05bc05228285a374580d2f061197caf4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11148,7 +11178,7 @@ GameObject:
   - component: {fileID: 2026973981}
   - component: {fileID: 2026973983}
   m_Layer: 5
-  m_Name: NextButton
+  m_Name: Demo3_NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
