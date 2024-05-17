@@ -13,6 +13,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button playGameButton;
     [SerializeField] private Button howToPlayButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private HowToPlayMenu howToPlayMenu;
 
     private void Awake()
     {
@@ -38,7 +39,11 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         playGameButton.Select();
+        howToPlayMenu.OnMenuHide += HowToPlayMenu_OnMenuHide;
     }
 
-
+    private void HowToPlayMenu_OnMenuHide(object sender, EventArgs e)
+    {
+        playGameButton.Select();
+    }
 }

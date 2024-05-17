@@ -891,6 +891,7 @@ MonoBehaviour:
   playGameButton: {fileID: 1227044779}
   howToPlayButton: {fileID: 158862362}
   quitButton: {fileID: 1181163534}
+  howToPlayMenu: {fileID: 1334052455}
 --- !u!1 &191822916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7691,14 +7692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b480fd242e3dea41be8f50bc1899a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demo1_transform: {fileID: 6973217}
-  demo2_transform: {fileID: 485313041}
-  demo3_transform: {fileID: 132907989}
-  demo4_transform: {fileID: 1078016196}
-  demo5_transform: {fileID: 1877736269}
-  demo6_transform: {fileID: 2128728693}
-  demo7_transform: {fileID: 2027443769}
-  demo8_transform: {fileID: 191822917}
   demoTransformArray:
   - {fileID: 6973217}
   - {fileID: 485313041}

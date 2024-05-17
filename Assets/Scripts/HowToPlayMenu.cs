@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,7 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HowToPlayMenu : MonoBehaviour
-{ 
+{
+
+    public event EventHandler OnMenuHide;
 
     [SerializeField] private Transform[] demoTransformArray;
 
@@ -172,10 +175,13 @@ public class HowToPlayMenu : MonoBehaviour
             if (i == 0) demoTransformArray[i].gameObject.SetActive(true);
             else demoTransformArray[i].gameObject.SetActive(false);
         }
+
+        demo1_NextButton.Select();
     }
 
     private void Hide()
     {
         gameObject.SetActive(false);
+        OnMenuHide?.Invoke(this, EventArgs.Empty);
     }
 }
